@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Rock Paper Scissor</string>
+    <string name="edit_username">Enter Username</string>
+    <string name="edit_password">Enter Password</string>
+    <string name="button_login">Sign in</string>
+    <string name="save_credentials_checkbox">Save Credentials</string>
+    <string name="status_textView">Status...</string>
+    <string name="rock_button">Rock</string>
+    <string name="paper_button">Paper</string>
+    <string name="send_button">Send</string>
+    <string name="scissor_button">Scissor</string>
+    <string name="button_sign_up">Sign Up</string>
+</resources>

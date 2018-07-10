@@ -1,3 +1,3 @@
-# COP4331BigProjectSummer2018
+# ROCK-PAPER-SCISSOR
 
-This is a class project for COP 4331 - Processes of Object Oriented Programming Class. Our team is creating a Rock, Paper, Scissor app that will allow users to compete against each other via web interface. The results will be displayed on the webpage while the users will enter their choice (Rock, Paper, or Scissor) on the app. A video for demonstration is under development and will be uploaded soon. 
+RPSX-TREME ISTHE NEXT EVOLUTION OF YOUR FAVORITE JUVENILE GAME - NOW YOU CAN SETTLE YOUR PETTY DISPUTES FROM YOUR HANDHELD DEVICE, OR SET UP TOURNAMENTS TO DETERMINE THE ALPHA MEMBER OF YOUR ENTIRE FRIEND GROUP. TO BE EXACT, RPS X-TREMEIS A WEB-BASED ANDROID APPLICATION THAT MAKES IT POSSIBLE TO SET UP/JOIN LOBBIES FOR ROCK-PAPER-SCISSORS MATCHES/TOURNAMENTS, AND ALSO KEEPS TRACK OF A VARIETY OF PLAYER PERFORMANCE STATISTICS. PLAYERS WILL BE ABLE TO LOG IN AND MAKE OR JOIN A LOBBY.

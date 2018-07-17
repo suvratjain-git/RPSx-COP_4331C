@@ -1,13 +1,13 @@
 <resources>
+    <!-- MainActivity.java Class Strings -->
     <string name="app_name">Rock Paper Scissor</string>
-    <string name="edit_username">Enter Username</string>
-    <string name="edit_password">Enter Password</string>
-    <string name="button_login">Sign in</string>
-    <string name="save_credentials_checkbox">Save Credentials</string>
-    <string name="status_textView">Status...</string>
-    <string name="rock_button">Rock</string>
-    <string name="paper_button">Paper</string>
-    <string name="send_button">Send</string>
-    <string name="scissor_button">Scissor</string>
-    <string name="button_sign_up">Sign Up</string>
+    <string name="enter_username">Enter Username</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_up_text_link">Sign Up</string>
+
+    <!-- SignUp.java Class Strings -->
+    <string name="first_name_textView">First Name</string>
+    <string name="last_name_textView">Last Name</string>
+
 </resources>

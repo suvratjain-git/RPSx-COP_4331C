@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".MainActivity"
     tools:layout_editor_absoluteY="81dp">
 
@@ -15,9 +15,9 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="132dp"
+        android:layout_marginTop="104dp"
         android:ems="10"
-        android:hint="@string/edit_username"
+        android:hint="@string/enter_username"
         android:inputType="text|textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,56 +33,43 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="40dp"
         android:ems="10"
-        android:hint="@string/edit_password"
+        android:hint="@string/enter_password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usernameField" />
 
-    <CheckBox
-        android:id="@+id/saveCredentials"
-        android:layout_width="231dp"
-        android:layout_height="29dp"
+    <Button
+        android:id="@+id/sign_in_Button"
+        android:layout_width="232dp"
+        android:layout_height="47dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:duplicateParentState="false"
-        android:text="@string/save_credentials_checkbox"
+        android:layout_marginTop="8dp"
+        android:onClick="login"
+        android:text="@string/sign_in"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordField" />
 
-    <Button
-        android:id="@+id/loginButton"
-        android:layout_width="232dp"
-        android:layout_height="47dp"
+    <TextView
+        android:id="@+id/signupButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/button_sign_up"
+        android:text="@string/sign_up_text_link"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_up_Button"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/sign_up_Button"
-        android:layout_width="232dp"
-        android:layout_height="47dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:onClick="login"
-        android:text="@string/button_login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/saveCredentials" />
+        app:layout_constraintTop_toBottomOf="@+id/sign_in_Button"
+        app:layout_constraintVertical_bias="0.041" />
 
 </android.support.constraint.ConstraintLayout>

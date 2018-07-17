@@ -10,85 +10,35 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/firstNameLabel"
-            android:layout_width="80dp"
-            android:layout_height="25dp"
-            android:layout_marginEnd="56dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="56dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="36dp"
-            android:text="@string/first_name_textView"
-            app:layout_constraintEnd_toStartOf="@+id/firstNameField"
-            app:layout_constraintHorizontal_bias="0.888"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/firstNameField"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/lastNameLabel"
-            android:layout_width="80dp"
-            android:layout_height="25dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
-            android:text="@string/last_name_textView"
-            app:layout_constraintEnd_toStartOf="@+id/lastNameField"
-            app:layout_constraintHorizontal_bias="0.14"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/firstNameLabel" />
-
-        <EditText
-            android:id="@+id/lastNameField"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="12dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/firstNameField" />
-
-        <TextView
             android:id="@+id/userNameLabel"
-            android:layout_width="80dp"
-            android:layout_height="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="40dp"
-            android:text="Username"
+            android:layout_marginTop="52dp"
+            android:text="@string/username"
             app:layout_constraintEnd_toStartOf="@+id/userNameField"
             app:layout_constraintHorizontal_bias="0.14"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lastNameLabel" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/userNameField"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
+            android:layout_marginLeft="8dp"
             android:layout_marginRight="16dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="40dp"
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lastNameField" />
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/displayNameLabel"
@@ -99,7 +49,7 @@
             android:layout_marginRight="52dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="40dp"
-            android:text="Display Name"
+            android:text="@string/display_name"
             app:layout_constraintEnd_toStartOf="@+id/displayNameField"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -111,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
@@ -125,8 +75,8 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="36dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="48dp"
-            android:text="Enter Password"
+            android:layout_marginTop="44dp"
+            android:text="@string/enter_password_sign_up"
             app:layout_constraintEnd_toStartOf="@+id/PasswordField"
             app:layout_constraintHorizontal_bias="0.727"
             app:layout_constraintStart_toStartOf="parent"
@@ -138,7 +88,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:ems="10"
             android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
@@ -152,8 +102,8 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="16dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="48dp"
-            android:text="Re-enter Password"
+            android:layout_marginTop="36dp"
+            android:text="@string/re_enter_password"
             app:layout_constraintEnd_toStartOf="@+id/rePasswordField"
             app:layout_constraintHorizontal_bias="0.727"
             app:layout_constraintStart_toStartOf="parent"
@@ -172,6 +122,24 @@
             app:layout_constraintTop_toBottomOf="@+id/PasswordField" />
 
         <Button
+            android:id="@+id/signupButton2"
+            android:layout_width="154dp"
+            android:layout_height="41dp"
+            android:layout_marginBottom="32dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/sign_up"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rePasswordLabel"
+            app:layout_constraintVertical_bias="0.459" />
+
+        <Button
             android:id="@+id/cancelButton"
             android:layout_width="154dp"
             android:layout_height="41dp"
@@ -181,27 +149,13 @@
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Cancel"
+            android:text="@string/cancel"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintHorizontal_bias="0.818"
             app:layout_constraintStart_toEndOf="@+id/signupButton2"
             app:layout_constraintTop_toBottomOf="@+id/rePasswordField"
-            app:layout_constraintVertical_bias="0.875" />
-
-        <Button
-            android:id="@+id/signupButton2"
-            android:layout_width="154dp"
-            android:layout_height="41dp"
-            android:layout_marginBottom="32dp"
-            android:layout_marginLeft="28dp"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="8dp"
-            android:text="Sign Up"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rePasswordLabel"
-            app:layout_constraintVertical_bias="0.861" />
+            app:layout_constraintVertical_bias="0.413" />
 
     </android.support.constraint.ConstraintLayout>
 </LinearLayout>

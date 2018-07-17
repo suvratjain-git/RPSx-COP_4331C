@@ -20,7 +20,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //called when user clicks on sign up text
+    public void signupLink(View view) {
 
+        Intent openSignUpPage = new Intent(this, SignUp.class);
+        startActivity(openSignUpPage);
+
+    }
 
     /* Called when the user taps the Sign-in button */
     public void login(View view) {
@@ -48,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
 
 
 }

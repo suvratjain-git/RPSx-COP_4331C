@@ -7,7 +7,12 @@
     <string name="sign_up_text_link">Sign Up</string>
 
     <!-- SignUp.java Class Strings -->
-    <string name="first_name_textView">First Name</string>
-    <string name="last_name_textView">Last Name</string>
+    <string name="username">Username</string>
+    <string name="display_name">Display Name</string>
+    <string name="enter_password_sign_up">Enter Password</string>
+    <string name="re_enter_password">Re-enter Password</string>
+    <string name="sign_up">Sign up</string>
+    <string name="cancel">Cancel</string>
+
 
 </resources>

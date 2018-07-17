@@ -19,7 +19,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    /** Called when the user taps the Login button */
+    //called when user clicks on sign up text
+
+
+    /* Called when the user taps the Sign-in button */
     public void login(View view) {
 
         boolean authorization = false;
@@ -45,4 +48,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+
 }

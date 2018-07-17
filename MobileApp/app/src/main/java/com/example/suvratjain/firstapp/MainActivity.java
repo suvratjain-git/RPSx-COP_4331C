@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
         if(authorization)
         {
-            Intent intent = new Intent(this, GameScreen.class);
-            startActivity(intent);
+            Intent menu = new Intent(this, MenuScreen.class);
+            startActivity(menu);
         }
 
     }

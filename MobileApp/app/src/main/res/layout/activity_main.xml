@@ -15,7 +15,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="132dp"
+        android:layout_marginTop="104dp"
         android:ems="10"
         android:hint="@string/edit_username"
         android:inputType="text|textPersonName"
@@ -51,6 +51,6 @@
         android:text="@string/button_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="328dp" />
+        tools:layout_editor_absoluteY="283dp" />
 
 </android.support.constraint.ConstraintLayout>

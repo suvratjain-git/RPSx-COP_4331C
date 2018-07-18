@@ -5,8 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-
-import static android.provider.AlarmClock.EXTRA_MESSAGE;
+import android.widget.TextView;
+import android.graphics.Paint;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,13 +19,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    //called when user clicks on sign up text
-    public void signupLink(View view) {
-
-        Intent openSignUpPage = new Intent(this, SignUp.class);
-        startActivity(openSignUpPage);
-
-    }
 
     /* Called when the user taps the Sign-in button */
     public void login(View view) {
@@ -48,12 +41,19 @@ public class MainActivity extends AppCompatActivity {
 
         if(authorization)
         {
-            Intent menu = new Intent(this, MenuScreen.class);
+            Intent menu = new Intent(this, SignUp.class);
             startActivity(menu);
         }
 
     }
 
 
+    public void openSignUpPage(View view) {
 
+        TextView signUpButton = findViewById(R.id.SignUpLink);
+        signUpButton.setPaintFlags(signUpButton.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
+        Intent menu = new Intent(this, SignUp.class);
+        startActivity(menu);
+    }
 }

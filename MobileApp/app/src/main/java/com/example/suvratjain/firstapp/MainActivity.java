@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(authorization)
         {
-            Intent menu = new Intent(this, SignUp.class);
+            Intent menu = new Intent(this, Menu.class);
             startActivity(menu);
         }
 

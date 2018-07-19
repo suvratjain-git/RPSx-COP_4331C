@@ -41,35 +41,33 @@ public class Menu extends AppCompatActivity {
     public void openNewSession(View view)
     {
 
-
         final AlertDialog.Builder gameOptions = new AlertDialog.Builder(Menu.this);
         gameOptions.setTitle("Choose an option");
+
         gameOptions.setSingleChoiceItems(choices, -1, new DialogInterface.OnClickListener()
         {
             @Override
             public void onClick(DialogInterface dialogInterface, int item)
             {
+                Intent i = null;
 
                 if (item == 0) {
-                    Toast.makeText(Menu.this, "Please wait...", Toast.LENGTH_LONG).show();
-                    Toast.makeText(Menu.this, "Creating a new session...", Toast.LENGTH_LONG).show();
-
-                    Intent i = new Intent(Menu.this, NewSession.class);
-                    startActivity(i);
-
+                    Toast.makeText(Menu.this, "Creating a new session...Please wait", Toast.LENGTH_LONG).show();
+                    i = new Intent(Menu.this, NewSession.class);
                 } else if (item == 1){
-                    Toast.makeText(Menu.this, "Please wait...", Toast.LENGTH_LONG).show();
-                    Toast.makeText(Menu.this, "Entering an existing session...", Toast.LENGTH_LONG).show();
-
-                    Intent i = new Intent(Menu.this, ExistingSession.class);
-                    startActivity(i);
+                    Toast.makeText(Menu.this, "Entering an existing session...Please wait", Toast.LENGTH_LONG).show();
+                    i = new Intent(Menu.this, ExistingSession.class);
                 }
+
                 dialogInterface.dismiss();
+                startActivity(i);
             }
         });
 
         gameOptionsDialog = gameOptions.create();
         gameOptionsDialog.show();
+
+
 
     }
 

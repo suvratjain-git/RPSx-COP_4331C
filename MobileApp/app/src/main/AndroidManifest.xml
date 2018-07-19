@@ -11,8 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:label="Welcome to RPS X"
-            >
+            android:label="Welcome to RPS X">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,16 +20,13 @@
         </activity>
         <activity
             android:name=".SignUp"
-            android:label="Sign Up"
-            >
-
-        </activity>
+            android:label="Sign Up" />
         <activity
             android:name=".Menu"
-            android:label="Menu"
-            >
-
-        </activity>
+            android:label="Menu" />
+        <activity android:name=".Settings" />
+        <activity android:name=".LeaderBoard" />
+        <activity android:name=".ForgotPassword"></activity>
     </application>
 
 </manifest>

@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         if(authorization)
         {
             Intent menu = new Intent(this, Menu.class);
+            //send the username to the next activity
             menu.putExtra("user name",usernameFieldValue);
             startActivity(menu);
         }
@@ -62,5 +63,10 @@ public class MainActivity extends AppCompatActivity {
 
         Intent menu = new Intent(this, SignUp.class);
         startActivity(menu);
+    }
+
+    public void openForGotPasswordPage(View view) {
+        Intent i = new Intent(this, ForgotPassword.class);
+        startActivity(i);
     }
 }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.graphics.Paint;
+import android.widget.Toast;
 
 public class SignUp extends AppCompatActivity {
 
@@ -17,17 +18,19 @@ public class SignUp extends AppCompatActivity {
 
     //add entry to database
     public void signUp(View view) {
-//
-//        Dialog dialog = new Dialog(ActivityName.this);
-//        dialog.setContentView(R.layout.dialogbrand_layout);
-//        dialog.setTitle("Hello");
-//        TextView textViewUser = (TextView) dialog.findViewById(R.id.textBrand);
-//        textViewUser.setText("Hi");
-//        dialog.show();
+
+        boolean everythingIsOkay = true;
+
+        if(everythingIsOkay)
+        {
+            Toast.makeText(SignUp.this, "User Added", Toast.LENGTH_LONG).show();
+        }
+
     }
 
     //go back to main screen
     public void cancel(View view) {
+
         finish();
     }
 }

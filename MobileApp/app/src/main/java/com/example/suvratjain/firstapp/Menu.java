@@ -17,24 +17,39 @@ public class Menu extends AppCompatActivity {
     private AlertDialog gameOptionsDialog;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
         displayUserNameField = findViewById(R.id.userName);
+        displayUserNameField.setText("Username: " + getUsername());
 
-        //get extras from previous activity
-        Intent i = getIntent();
-        Bundle b = i.getExtras();
+//        //get extras from previous activity
+//        Intent i = getIntent();
+//        b = i.getExtras();
+//
+//        if(b!=null){
+//            String j = (String) b.get("user name");
+//            displayUserNameField.setText("Username: " + j);
+//        } else {
+//            System.out.println("It is null");
+//        }
+
+    }
+
+    public String getUsername(){
+
+        Intent main = getIntent();
+        Bundle b = main.getExtras();
+        String username = null;
 
         if(b!=null){
-            String j = (String) b.get("user name");
-            displayUserNameField.setText("Username: " + j);
-        } else {
-            System.out.println("It is null");
+            username = (String) b.get("user name");
         }
 
+        return username;
     }
 
     //open the dialog box with radio buttons
@@ -115,8 +130,9 @@ public class Menu extends AppCompatActivity {
     //open Settings Activity
     public void openSettings(View view) {
 
-        Intent i = new Intent(this, Settings.class);
-        startActivity(i);
+        Intent settings = new Intent(this, Settings.class);
+        settings.putExtra("user name", getUsername());
+        startActivity(settings);
     }
 
     //openLeaderBoard Activity

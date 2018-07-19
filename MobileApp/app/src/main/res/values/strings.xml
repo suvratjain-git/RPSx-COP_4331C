@@ -34,4 +34,9 @@
     <string name="wins">Wins</string>
     <string name="losses">Losses</string>
 
+    <!-- Settings.java Class Strings -->
+    <string name="sound">Enable Sound</string>
+    <string name="accountLink">Change Account Info</string>
+    <string name="report">Report a Problem</string>
+
 </resources>

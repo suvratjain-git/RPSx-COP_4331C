@@ -49,18 +49,54 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int item)
             {
-                Intent i = null;
 
                 if (item == 0) {
                     Toast.makeText(Menu.this, "Creating a new session...Please wait", Toast.LENGTH_LONG).show();
-                    i = new Intent(Menu.this, NewSession.class);
+
+                    //add delay
+                    Thread welcomeThread = new Thread() {
+                        @Override
+                        public void run() {
+                            try {
+                                super.run();
+                                sleep(3000);  //Delay of 3 seconds
+                            } catch (Exception e) {
+
+                            } finally {
+
+                                Intent i = new Intent(Menu.this, NewSession.class);
+                                startActivity(i);
+
+                            }
+                        }
+                    };
+                    welcomeThread.start();
+
+
                 } else if (item == 1){
                     Toast.makeText(Menu.this, "Entering an existing session...Please wait", Toast.LENGTH_LONG).show();
-                    i = new Intent(Menu.this, ExistingSession.class);
+                    //add delay
+                    Thread welcomeThread = new Thread() {
+                        @Override
+                        public void run() {
+                            try {
+                                super.run();
+                                sleep(3000);  //Delay of 3 seconds
+                            } catch (Exception e) {
+
+                            } finally {
+
+                                Intent i = new Intent(Menu.this, ExistingSession.class);
+                                startActivity(i);
+
+                            }
+                        }
+                    };
+                    welcomeThread.start();
                 }
 
                 dialogInterface.dismiss();
-                startActivity(i);
+
             }
         });
 

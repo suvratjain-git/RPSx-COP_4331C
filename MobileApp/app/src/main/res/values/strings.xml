@@ -27,4 +27,11 @@
     <string name="retrieve_password">Retrieve Password</string>
     <string name="back">Back</string>
 
+    <!-- ExistingSession.java Class Strings -->
+    <string name="enter">Enter Room</string>
+
+    <!-- LeaderBoard.java Class Strings -->
+    <string name="wins">Wins</string>
+    <string name="losses">Losses</string>
+
 </resources>

@@ -1,13 +1,26 @@
 <resources>
     <!-- MainActivity.java Class Strings -->
-    <string name="app_name">Rock Paper Scissor</string>
+    <string name="app_name">RPS X</string>
     <string name="enter_username">Enter Username</string>
     <string name="enter_password">Enter Password</string>
     <string name="sign_in">Sign in</string>
-    <string name="sign_up_text_link">Sign Up</string>
+    <string name="sign_up_text_link">Sign Up?</string>
+    <string name="forgot_password_text_link">Forgot Password?</string>
 
-    <!-- SignUp.java Class Strings -->
-    <string name="first_name_textView">First Name</string>
-    <string name="last_name_textView">Last Name</string>
+    <!-- Signup.java Class Strings -->
+    <string name="firstname">Enter First Name</string>
+    <string name="lastname">Enter Last Name</string>
+    <string name="username">Enter Username</string>
+    <string name="displayname">Enter Display Name</string>
+    <string name="password">Enter Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="SignUp_Button">Sign Up</string>
+    <string name="Cancel_Button">Cancel</string>
+
+    <!-- Menu.java Class Strings -->
+    <string name="play">Play</string>
+    <string name="leader_board">Leader Board</string>
+    <string name="settings">Settings</string>
+    <string name="exit">Exit</string>
 
 </resources>

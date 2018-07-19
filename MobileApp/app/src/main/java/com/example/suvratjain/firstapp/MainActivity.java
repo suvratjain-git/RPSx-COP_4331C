@@ -10,8 +10,14 @@ import android.graphics.Paint;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String dummyUsername = "test";
+    public static final String dummyUsername = "group6";
     public static final String dummypassword = "test";
+
+    private EditText usernameValue;
+    private EditText passwordValue;
+    private String usernameFieldValue;
+    private String passwordFieldValue;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,19 +25,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-
     /* Called when the user taps the Sign-in button */
     public void login(View view) {
 
         boolean authorization = false;
 
         //get the fields by their ID mentioned in XML
-        EditText usernameValue = findViewById(R.id.usernameField);
-        EditText passwordValue = findViewById(R.id.passwordField);
 
+        usernameValue = findViewById(R.id.usernameField);
+        passwordValue = findViewById(R.id.passwordField);
         //retrieve the strings typed in the fields
-        String usernameFieldValue = usernameValue.getText().toString();
-        String passwordFieldValue = passwordValue.getText().toString();
+        usernameFieldValue = usernameValue.getText().toString();
+        passwordFieldValue = passwordValue.getText().toString();
+
 
         //check the username and password and set the authorization to true
         if(usernameFieldValue.equals(dummyUsername))
@@ -42,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         if(authorization)
         {
             Intent menu = new Intent(this, Menu.class);
+            menu.putExtra("user name",usernameFieldValue);
             startActivity(menu);
         }
 

@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:label="Welcome to RPS X">
+            android:label="RPS X-treme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,9 +24,19 @@
         <activity
             android:name=".Menu"
             android:label="Menu" />
-        <activity android:name=".Settings" />
-        <activity android:name=".LeaderBoard" />
-        <activity android:name=".ForgotPassword"></activity>
+        <activity
+            android:name=".Settings"
+            android:label="Settings" />
+        <activity
+            android:name=".LeaderBoard"
+            android:label="Leader Board" />
+        <activity
+            android:name=".ForgotPassword"
+            android:label="Retrieve Password" />
+        <activity android:name=".NewSession"
+            android:label="Create a Session"/>
+        <activity android:name=".ExistingSession"
+            android:label="Enter Room Number"></activity>
     </application>
 
 </manifest>

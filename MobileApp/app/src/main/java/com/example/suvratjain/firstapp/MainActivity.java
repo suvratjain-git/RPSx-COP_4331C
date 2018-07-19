@@ -4,25 +4,37 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.graphics.Paint;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String dummyUsername = "group6";
+    public static final String dummyUsername = "test";
     public static final String dummypassword = "test";
 
     private EditText usernameValue;
     private EditText passwordValue;
     private String usernameFieldValue;
     private String passwordFieldValue;
+    private TextView signUpButton;
+    private TextView forgotPasswordTextView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
+
+        signUpButton = findViewById(R.id.SignUpLink);
+        forgotPasswordTextView = findViewById(R.id.ForgotPasswordLink);
+
+        signUpButton.setPaintFlags(signUpButton.getPaintFlags() & ~Paint.UNDERLINE_TEXT_FLAG);
+        forgotPasswordTextView.setPaintFlags(forgotPasswordTextView.getPaintFlags() & ~Paint.UNDERLINE_TEXT_FLAG);
     }
 
     /* Called when the user taps the Sign-in button */
@@ -58,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void openSignUpPage(View view) {
 
-        TextView signUpButton = findViewById(R.id.SignUpLink);
+
         signUpButton.setPaintFlags(signUpButton.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         Intent menu = new Intent(this, SignUp.class);
@@ -66,6 +78,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openForGotPasswordPage(View view) {
+
+
+        forgotPasswordTextView.setPaintFlags(forgotPasswordTextView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
         Intent i = new Intent(this, ForgotPassword.class);
         startActivity(i);
     }

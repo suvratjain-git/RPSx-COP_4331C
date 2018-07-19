@@ -30,7 +30,7 @@ public class Menu extends AppCompatActivity {
 
         if(b!=null){
             String j = (String) b.get("user name");
-            displayUserNameField.setText(j);
+            displayUserNameField.setText("Username: " + j);
         } else {
             System.out.println("It is null");
         }
@@ -41,6 +41,7 @@ public class Menu extends AppCompatActivity {
     public void openNewSession(View view)
     {
 
+
         final AlertDialog.Builder gameOptions = new AlertDialog.Builder(Menu.this);
         gameOptions.setTitle("Choose an option");
         gameOptions.setSingleChoiceItems(choices, -1, new DialogInterface.OnClickListener()
@@ -48,15 +49,20 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int item)
             {
-                switch (item)
-                {
-                    case 0:
-                        Toast.makeText(Menu.this, " Create a Session Selected", Toast.LENGTH_LONG).show();
-                        break;
-                    case 1:
-                        Toast.makeText(Menu.this, " Enter a Session Selected", Toast.LENGTH_LONG).show();
-                        break;
 
+                if (item == 0) {
+                    Toast.makeText(Menu.this, "Please wait...", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Menu.this, "Creating a new session...", Toast.LENGTH_LONG).show();
+
+                    Intent i = new Intent(Menu.this, NewSession.class);
+                    startActivity(i);
+
+                } else if (item == 1){
+                    Toast.makeText(Menu.this, "Please wait...", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Menu.this, "Entering an existing session...", Toast.LENGTH_LONG).show();
+
+                    Intent i = new Intent(Menu.this, ExistingSession.class);
+                    startActivity(i);
                 }
                 dialogInterface.dismiss();
             }

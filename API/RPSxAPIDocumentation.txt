@@ -1,0 +1,162 @@
+Guide
+
+
+Description: Does x, y, and z
+
+fileName( parameter_1, parameter_2, parameter_3, ... )
+{
+
+  Returns value_1, value_2, value_3, ...
+}
+
+
+Takes data and creates a user on the database with said data. The API then
+returns 1 for success and 0 for connection error or query error.
+
+addUserrpsx.php(String Username, String(Hash) Password, String firstName,
+                String lastName, String displayName, String Email)
+{
+
+  Returns 1 or 0
+}
+
+
+This should be called after a user has selected forgotten password and their
+account has been verified. This API should be called from a temporary URL
+allowing the user to change their password. Returns 1 on success and 0 on
+connection error or query error.
+
+changePasswordrpsx.php(String Username, String(Hash) newPassword,
+                       String displayName)
+{
+
+  Returns 1 or 0
+}
+
+
+Takes a room code and creates an entry in the database with the room code and
+the hosts displayName. This API will check if there already is a room with that
+code. In the event the code is used the API will either delete it assuming the
+room isFull or return 2 indicating a different room number must be used. Returns
+1 on success and 0 on connection error or query error.
+
+createRoomrpsx.php(String room, String displayName)
+{
+
+  Returns 1 or 0 or 2
+}
+
+
+Takes no input. Returns a JSON including the displayNames of the top 5 losers.
+This should be called every time the app / website is opened.
+
+getLossBoardrpsx.php()
+{
+
+  Returns "displayName, gamesLost ? displayName2, gamesLost2 ?, ..."
+}
+
+
+Same as getLossBoardrpsx.php except with wins
+
+getWinBoardrpsx.php()
+{
+
+  Returns "displayName, gamesWon ? displayName2, gamesWon2 ?, ..."
+}
+
+
+Takes a room code and the displayName of the user trying to join the room. This
+API will update the room with the users displayName and place it in the second
+user slot. This API should be called only after a room is created. Returns 1
+on success and 0 on connection error or query error.
+
+joinRoomrpsx.php(String room, String displayName)
+{
+
+  Returns 1 or 0
+}
+
+
+Takes a Username and Password and checks if the account exists. If so it returns
+the accounts data. If not it returns 0 to indicate no account found.
+
+Loginrpsx.php(String Username, String(hash) Password)
+{
+
+  Returns "displayName, gamesWon, gamesLost, gamesTied, gamesPlayed" or 0
+}
+
+
+Takes a room code and returns the names of the players and what choice each
+player made. This should be called after verifyChoice to ensure both players
+have played. Returns 0 on connection error or query error.
+
+requestChoicerpsx.php(String room)
+{
+
+  Returns "displayName of host, hosts choice,
+           displayName of player, players choice" or 0
+}
+
+
+Takes a room, the displayName, and their choice. The API will set the
+displayNames choice to what they pick. Returns 1 on success and 0 on connection
+error or query error.
+
+submitChoicerpsx.php(String room, String displayName, String choice)
+{
+
+    Returns 1 or 0
+}
+
+
+This API is meant to take in a game change or a displayName change. If its a
+game change submit it as gamesWon, gamesLost, or gamesTied along with their
+total games played. The Android client has access to their stats as its sent
+on every login. So for example if sally wins a game you'd send Sally's
+gamesWon++ and gamesPlayed++. This API takes variable parameters both situations
+are shown below. Returns 1 on success and 0 on connection error or query error.
+
+updateInforpsx.php(int gamesWon/gamesLost/gamesTied, String Username)
+{
+
+  Returns 1 or 0
+}
+updateInforpsx.php(String displayName, String Username)
+{
+
+  Returns 1 or 0
+}
+
+
+Takes Username, displayName, and an email and returns 1 if the account exists or
+0 if the account does not exist.
+
+verifyAccountrpsx.php(String Username, String displayName, String email)
+{
+
+  Returns 1 or 0
+}
+
+
+Takes in a room number and returns 1 if both players have submitted a choice or
+0 if a player has yet to make a choice. This should be called after both apps
+have made a submitChoicerpsx.php call.
+
+verifyChoicerpsx.php(String room)
+{
+
+  Returns 1 or 0
+}
+
+
+Takes in a room number and returns 1 if a room has two players or 0 if the room
+is still missing a player. This should be called after a player has hosted a
+room and continuously called until the room is full.
+
+verifyFullRoomrpsx.php(String room)
+{
+
+  Returns 1 or 0
+}

@@ -26,12 +26,12 @@
 			$gamesTied = $row["gamesTied"];
 			$gamesPlayed = $row["gamesPlayed"];
 			$displayName = $row["displayName"];
-			$data .='"'.$displayName.",".$gamesWon.",".$gamesLost.",".$gamesTied.",".$gamesPlayed.",".$ID.'"';
+			$data .='"'.$displayName.",".$gamesWon.",".$gamesLost.",".$gamesTied.",".$gamesPlayed.'"';
 			returnWithInfo($data);
 		}
 		else
 		{
-			returnWithError("No Records Found");
+			returnWithError("0");
 		}
 		$conn->close();
 	}
@@ -49,7 +49,7 @@
 
 	function returnWithError($err)
 	{
-		$retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
+		$retValue = json_encode($err);
 		sendResultInfoAsJson($retValue);
 	}
 

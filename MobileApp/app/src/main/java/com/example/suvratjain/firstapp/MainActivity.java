@@ -16,8 +16,8 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText usernameValue;
     private EditText passwordValue;
-    private String usernameFieldValue;
-    private String passwordFieldValue;
+    private String login_username;
+    private String login_password;
     private TextView signUpButton;
     private TextView forgotPasswordTextView;
 
@@ -47,23 +47,25 @@ public class MainActivity extends AppCompatActivity {
         usernameValue = findViewById(R.id.usernameField);
         passwordValue = findViewById(R.id.passwordField);
         //retrieve the strings typed in the fields
-        usernameFieldValue = usernameValue.getText().toString();
-        passwordFieldValue = passwordValue.getText().toString();
+        login_username = usernameValue.getText().toString();
+        login_password = passwordValue.getText().toString();
 
+        LoginPHPWorker loginPHPWorker = new LoginPHPWorker(this);
+        loginPHPWorker.execute("login", login_username,login_password);
 
-        //check the username and password and set the authorization to true
-        if(usernameFieldValue.equals(dummyUsername))
-            if(passwordFieldValue.equals(dummypassword))
-                authorization = true;
-
-
-        if(authorization)
-        {
-            Intent menu = new Intent(this, Menu.class);
-            //send the username to the next activity
-            menu.putExtra("user name",usernameFieldValue);
-            startActivity(menu);
-        }
+//        //check the username and password and set the authorization to true
+//        if(usernameFieldValue.equals(dummyUsername))
+//            if(passwordFieldValue.equals(dummypassword))
+//                authorization = true;
+//
+//
+//        if(authorization)
+//        {
+//            Intent menu = new Intent(this, Menu.class);
+//            //send the username to the next activity
+//            menu.putExtra("user name",usernameFieldValue);
+//            startActivity(menu);
+//        }
 
     }
 

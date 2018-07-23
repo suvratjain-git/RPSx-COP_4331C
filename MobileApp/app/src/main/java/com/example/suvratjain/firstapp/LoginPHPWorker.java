@@ -2,7 +2,9 @@ package com.example.suvratjain.firstapp;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Parcelable;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -20,6 +22,10 @@ public class LoginPHPWorker extends AsyncTask<String, Void, String> {
 
     Context context;
     AlertDialog alertDialog;
+    private boolean authorization = false;
+    private String user_name;
+    private String password;
+
 
     LoginPHPWorker (Context cxt) {
         context = cxt;
@@ -36,8 +42,8 @@ public class LoginPHPWorker extends AsyncTask<String, Void, String> {
         {
             try {
 
-                String user_name = params[1];
-                String password = params[2];
+                 user_name = params[1];
+                 password = params[2];
 
                 URL url = new URL(login_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -67,13 +73,14 @@ public class LoginPHPWorker extends AsyncTask<String, Void, String> {
                 while((line = bufferedReader.readLine()) != null)
                 {
                     result += line;
-                    System.out.println("result is " + result);
                 }
 
                 bufferedReader.close();
                 inputStream.close();
 
                 httpURLConnection.disconnect();
+
+
 
                 return result;
 
@@ -101,6 +108,18 @@ public class LoginPHPWorker extends AsyncTask<String, Void, String> {
         alertDialog.setMessage(result);
         alertDialog.show();
 
+        //start menu if the credentials are correct
+        if(result.equals("Login Successful!")){
+            Intent menu = new Intent(context, Menu.class);
+            //send the username to the next activity
+            menu.putExtra("user name", user_name);
+            context.startActivity(menu);
+            alertDialog.hide();
+        }
+
+
+
+
 
     }
 
@@ -108,4 +127,6 @@ public class LoginPHPWorker extends AsyncTask<String, Void, String> {
     protected void onProgressUpdate(Void... values) {
         super.onProgressUpdate(values);
     }
+
+
 }

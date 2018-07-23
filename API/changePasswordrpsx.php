@@ -2,11 +2,8 @@
 	$inData = getRequestInfo();
 
 	$userName = $inData["Username"];
-	$passWord = $inData["Password"];
-	$firstName = $inData["firstName"];
-	$lastName = $inData["lastName"];
+	$newPassword = $inData["newPassword"];
 	$displayName = $inData["displayName"];
-	$email = $inData["email"];
 
 	$conn = new mysqli("localhost", "RudeDude", "cop4331!", "RPSx");
 	if ($conn->connect_error || $userName == null)
@@ -15,15 +12,26 @@
 	}
 	else
 	{
-		$sql = "INSERT INTO Players_DB (Username,Password,firstName,lastName,displayName,email) VALUES ('" . $userName ."', '" . $passWord ."', '" . $firstName ."', '" . $lastName ."', '" . $displayName . "', '" . $email . "')";
-		if($result = $conn->query($sql) != TRUE)
-		{
-			returnWithError("0");
-		}
-		else
-		{
-			returnWithError("1");
-		}
+    $sql = "SELECT displayName,Username,ID FROM Players_DB where Username='" . $inData["Username"] . "' and displayName='" . $inData["displayName"] . "'";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    $ID = $row["ID"];
+    if($result->num_rows > 0)
+    {
+      $data = "UPDATE Players_DB SET Password= '". $newPassword . "'WHERE ID = '" . $ID . "' ";
+      if($res = $conn->query($data) != TRUE)
+  		{
+  			returnWithError("0");
+  		}
+      else
+  		{
+  			returnWithError("1");
+  		}
+    }
+    else
+    {
+      returnWithError("0");
+    }
 		$conn->close();
 	}
 

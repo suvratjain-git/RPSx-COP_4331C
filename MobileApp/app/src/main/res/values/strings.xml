@@ -4,7 +4,7 @@
     <string name="enter_username">Enter Username</string>
     <string name="enter_password">Enter Password</string>
     <string name="sign_in">Sign in</string>
-    <string name="sign_up_text_link">Not already a user? Click Here!</string>
+    <string name="sign_up_text_link">Not a user? Sign Up Here!</string>
     <string name="forgot_password_text_link">Forgot Password?</string>
 
     <!-- Signup.java Class Strings -->

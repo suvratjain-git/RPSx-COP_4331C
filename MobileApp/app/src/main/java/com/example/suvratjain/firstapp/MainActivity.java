@@ -55,12 +55,17 @@ public class MainActivity extends AppCompatActivity {
         login_password = passwordValue.getText().toString();
         type = "login";
 
+        //connects to database to check if the user exists
         LoginPHPWorker loginPHPWorker = new LoginPHPWorker(this);
         loginPHPWorker.execute(type, login_username,login_password);
 
-
-
-
+//        if(login_username.equals("test") && login_password.equals("test"))
+//        {
+//            Intent menu = new Intent(this, Menu.class);
+//            //send the username to the next activity
+//            menu.putExtra("user name", login_username);
+//            startActivity(menu);
+//        }
 
     }
 

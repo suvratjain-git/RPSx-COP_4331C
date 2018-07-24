@@ -13,7 +13,7 @@ import android.widget.Toast;
 public class Menu extends AppCompatActivity {
 
     private TextView displayUserNameField;
-    private String[] choices = new String[]{" Create a Session ", " Enter a Session "};
+    private String[] choices = new String[]{"Tournament", "1v1"};
     private AlertDialog gameOptionsDialog;
 
 
@@ -57,7 +57,11 @@ public class Menu extends AppCompatActivity {
     {
 
         final AlertDialog.Builder gameOptions = new AlertDialog.Builder(Menu.this);
-        gameOptions.setTitle("Choose an option");
+        gameOptions.setTitle("Choose Playing Mode");
+
+        final AlertDialog workInProgress = new AlertDialog.Builder(this).create();
+        workInProgress.setTitle("Sorry...Not Sorry!");
+        workInProgress.setMessage("Fuck off! Why did you click this?");
 
         gameOptions.setSingleChoiceItems(choices, -1, new DialogInterface.OnClickListener()
         {
@@ -65,8 +69,14 @@ public class Menu extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int item)
             {
 
-                if (item == 0) {
-                    Toast.makeText(Menu.this, "Creating a new session...Please wait", Toast.LENGTH_LONG).show();
+                if (item == 0)
+                {
+//                  Toast.makeText(Menu.this, "Tournaments are still in progress. Thank you for your patience", Toast.LENGTH_LONG).show();
+                    workInProgress.show();
+
+                }
+                else if (item == 1) {
+                    Toast.makeText(Menu.this, "Please wait...", Toast.LENGTH_LONG).show();
 
                     //add delay
                     Thread welcomeThread = new Thread() {
@@ -74,7 +84,7 @@ public class Menu extends AppCompatActivity {
                         public void run() {
                             try {
                                 super.run();
-                                sleep(3000);  //Delay of 3 seconds
+                                sleep(2500);  //Delay of 2.5 seconds
                             } catch (Exception e) {
 
                             } finally {
@@ -88,26 +98,6 @@ public class Menu extends AppCompatActivity {
                     welcomeThread.start();
 
 
-                } else if (item == 1){
-                    Toast.makeText(Menu.this, "Entering an existing session...Please wait", Toast.LENGTH_LONG).show();
-                    //add delay
-                    Thread welcomeThread = new Thread() {
-                        @Override
-                        public void run() {
-                            try {
-                                super.run();
-                                sleep(3000);  //Delay of 3 seconds
-                            } catch (Exception e) {
-
-                            } finally {
-
-                                Intent i = new Intent(Menu.this, ExistingSession.class);
-                                startActivity(i);
-
-                            }
-                        }
-                    };
-                    welcomeThread.start();
                 }
 
                 dialogInterface.dismiss();

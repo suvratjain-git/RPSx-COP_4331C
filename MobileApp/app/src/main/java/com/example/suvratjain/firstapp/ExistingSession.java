@@ -20,10 +20,10 @@ public class ExistingSession extends AppCompatActivity {
 
     public void enterRoom(View view) {
 
-        firstNum = findViewById(R.id.editText1);
-        secondNum = findViewById(R.id.editText2);
-        thirdNum = findViewById(R.id.editText3);
-        fourthNum = findViewById(R.id.editText4);
+        firstNum = findViewById(R.id.firstPlaceDigit);
+        secondNum = findViewById(R.id.secondPlaceDigit);
+        thirdNum = findViewById(R.id.thirdPlaceDigit);
+        fourthNum = findViewById(R.id.fourthPlaceDigit);
 
         firstN = firstNum.getText().toString();
         secondN = secondNum.getText().toString();
@@ -35,7 +35,7 @@ public class ExistingSession extends AppCompatActivity {
         int num3 = Integer.parseInt(thirdN);
         int num4 = Integer.parseInt(fourthN);
 
-        int result = num1*1000 + num2*100 + num3*10 + num4;
+        int result = num4*1000 + num3*100 + num2*10 + num1;
         String roomNumber = "Entering Room #" + Integer.toString(result);
 
         //go into the database to check if the session exists

@@ -36,8 +36,9 @@
             android:label="Retrieve Password" />
         <activity android:name=".NewSession"
             android:label="Create a Session"/>
-        <activity android:name=".ExistingSession"
-            android:label="Enter Room Number"></activity>
+        <activity
+            android:name=".OneVOne"
+            android:label="Enter Gamer ID" />
     </application>
 
 </manifest>

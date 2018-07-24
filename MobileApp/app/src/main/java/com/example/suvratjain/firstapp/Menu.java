@@ -1,6 +1,5 @@
 package com.example.suvratjain.firstapp;
 
-import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -60,8 +59,8 @@ public class Menu extends AppCompatActivity {
         gameOptions.setTitle("Choose Playing Mode");
 
         final AlertDialog workInProgress = new AlertDialog.Builder(this).create();
-        workInProgress.setTitle("Sorry...Not Sorry!");
-        workInProgress.setMessage("Fuck off! Why did you click this?");
+        workInProgress.setTitle("Sorry!");
+        workInProgress.setMessage("Due to lack of time and resources this feature is currently unavailable. Please check back soon!");
 
         gameOptions.setSingleChoiceItems(choices, -1, new DialogInterface.OnClickListener()
         {
@@ -84,12 +83,12 @@ public class Menu extends AppCompatActivity {
                         public void run() {
                             try {
                                 super.run();
-                                sleep(2500);  //Delay of 2.5 seconds
+                                sleep(1500);  //Delay of 1.5 seconds
                             } catch (Exception e) {
 
                             } finally {
 
-                                Intent i = new Intent(Menu.this, NewSession.class);
+                                Intent i = new Intent(Menu.this, OneVOne.class);
                                 startActivity(i);
 
                             }

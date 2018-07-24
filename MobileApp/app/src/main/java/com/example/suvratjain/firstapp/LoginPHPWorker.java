@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Parcelable;
 import android.webkit.URLUtil;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,6 +22,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+
+import static java.lang.Thread.sleep;
 
 public class LoginPHPWorker extends AsyncTask<String, Void, String> {
 
@@ -62,7 +65,7 @@ public class LoginPHPWorker extends AsyncTask<String, Void, String> {
                 URL url = new URL(login_url);
                 //open port to allow http connection
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-                httpURLConnection.setRequestMethod("POST");
+//                httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
                 httpURLConnection.setDoInput(true);
 
@@ -83,12 +86,26 @@ public class LoginPHPWorker extends AsyncTask<String, Void, String> {
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
 
-                String result = "";
+//                String result = "";
+                StringBuilder result = new StringBuilder();
                 String line;
 
                 while((line = bufferedReader.readLine()) != null)
                 {
-                    result += line;
+//                    result += line;
+                    result.append(line);
+                }
+
+                line = result.toString();
+
+//                String[] line2 = line.split(",");
+                String pattern = "[\\,]";
+                String[] jsonObjects = line.split(pattern);
+
+                for(int i = 0; i < jsonObjects.length; i++)
+                {
+                    System.out.println("jsonObjects["+i+"] = " + jsonObjects[i]);
+
                 }
 
                 bufferedReader.close();
@@ -98,7 +115,8 @@ public class LoginPHPWorker extends AsyncTask<String, Void, String> {
 
 
 
-                return result;
+
+                return result.toString();
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -118,33 +136,36 @@ public class LoginPHPWorker extends AsyncTask<String, Void, String> {
     protected void onPreExecute() {
         alertDialog = new AlertDialog.Builder(context).create();
         alertDialog.setTitle("Login Status");
+        alertDialog.hide();
     }
 
     @Override
     protected void onPostExecute(String result) {
 
-        alertDialog.setMessage(result);
-        alertDialog.show();
-
         //start menu if the credentials are correct
-        if(result.equals("\"0\"")){
+        if(result.equals("\"0\""))
+        {
+            alertDialog.setMessage("Login Unsuccessful. Try Again!");
+            alertDialog.show();
+        }
 
-        } else {
+        else
+        {
+            alertDialog.setMessage("Login Successful!");
+            alertDialog.show();
+
             Intent menu = new Intent(context, Menu.class);
-            //send the username to the next activity
             menu.putExtra("user name", user_name);
             context.startActivity(menu);
-            //alertDialog.hide();
         }
 
 
-
-
-
+       System.out.println("JSON equals: " + result);
     }
 
     @Override
-    protected void onProgressUpdate(Void... values) {
+    protected void onProgressUpdate(Void... values)
+    {
         super.onProgressUpdate(values);
     }
 

@@ -11,13 +11,15 @@ fileName( parameter_1, parameter_2, parameter_3, ... )
 
 
 Takes data and creates a user on the database with said data. The API then
-returns 1 for success and 0 for connection error or query error.
+returns 1 for success and 0 for connection error or query error. Returns 2
+to signify that the displayName is in use. Returns 3 to signify the email
+is in use.
 
 addUserrpsx.php(String Username, String(Hash) Password, String firstName,
                 String lastName, String displayName, String Email)
 {
 
-  Returns 1 or 0
+  Returns 1, 0, 2, or 3
 }
 
 

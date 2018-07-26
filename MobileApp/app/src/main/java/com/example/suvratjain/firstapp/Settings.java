@@ -29,6 +29,21 @@ public class Settings extends AppCompatActivity {
         }
     }
 
+
+     public void goToChangeInfo (View view) {
+        goToUrl ( "http://google.com/");
+    }
+
+    public void goToReportIssue (View view) {
+        goToUrl ( "http://ucf.edu/");
+    }
+
+    private void goToUrl (String url) {
+        Uri uriUrl = Uri.parse(url);
+        Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
+        startActivity(launchBrowser);
+    }
+
     public void back(View view) {
         finish();
     }

@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class Menu extends AppCompatActivity {
 
-    private TextView displayUserNameField;
+    private TextView userNameField, displayNameField;
     private String[] choices = new String[]{"Tournament", "1v1"};
     private AlertDialog gameOptionsDialog;
 
@@ -22,8 +22,12 @@ public class Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        displayUserNameField = findViewById(R.id.userName);
-        displayUserNameField.setText("Username: " + getUsername());
+        userNameField = findViewById(R.id.userName);
+        displayNameField = findViewById(R.id.displayName);
+
+        userNameField.setText("Username: " + getUsername());
+        displayNameField.setText("DisplayName: " + getDisplayName());
+
 
 //        //get extras from previous activity
 //        Intent i = getIntent();
@@ -38,7 +42,8 @@ public class Menu extends AppCompatActivity {
 
     }
 
-    public String getUsername(){
+    public String getUsername()
+    {
 
         Intent main = getIntent();
         Bundle b = main.getExtras();
@@ -49,6 +54,19 @@ public class Menu extends AppCompatActivity {
         }
 
         return username;
+    }
+
+    public String getDisplayName()
+    {
+        Intent main = getIntent();
+        Bundle b = main.getExtras();
+        String displayName = null;
+
+        if(b!=null){
+            displayName = (String) b.get("display name");
+        }
+
+        return displayName;
     }
 
     //open the dialog box with radio buttons

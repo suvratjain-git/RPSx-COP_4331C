@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.suvratjain.firstapp">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -34,11 +35,13 @@
         <activity
             android:name=".ForgotPassword"
             android:label="Retrieve Password" />
-        <activity android:name=".NewSession"
-            android:label="Create a Session"/>
+        <activity
+            android:name=".NewSession"
+            android:label="Create a Session" />
         <activity
             android:name=".OneVOne"
             android:label="Enter Gamer ID" />
+        <activity android:name=".Game"></activity>
     </application>
 
 </manifest>

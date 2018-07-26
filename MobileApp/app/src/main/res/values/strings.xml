@@ -11,11 +11,12 @@
     <string name="firstname">Enter First Name</string>
     <string name="lastname">Enter Last Name</string>
     <string name="username">Enter Username</string>
-    <string name="displayname">Enter GamerID</string>
+    <string name="displayname">Enter Display Name</string>
     <string name="password">Enter Password</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="SignUp_Button">Sign Up</string>
     <string name="Cancel_Button">Cancel</string>
+    <string name="enter_email">Enter E-mail</string>
 
     <!-- Menu.java Class Strings -->
     <string name="play">Play</string>
@@ -24,7 +25,7 @@
     <string name="exit">Exit</string>
 
     <!-- ForgotPassword.java Class Strings -->
-    <string name="retrieve_password">Retrieve Password</string>
+    <string name="send_password">Send Password</string>
     <string name="back">Back</string>
 
     <!-- one_v_one.java Class Strings -->

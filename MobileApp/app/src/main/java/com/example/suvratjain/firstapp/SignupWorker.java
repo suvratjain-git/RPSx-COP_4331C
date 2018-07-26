@@ -25,7 +25,7 @@ import java.net.URLEncoder;
 
 import static java.lang.Thread.sleep;
 
-public class LoginPHPWorker extends AsyncTask<String, Void, String> {
+public class SignupWorker extends AsyncTask<String, Void, String> {
 
     Context context;
     AlertDialog alertDialog;
@@ -34,35 +34,35 @@ public class LoginPHPWorker extends AsyncTask<String, Void, String> {
     private String password;
 
 
-    LoginPHPWorker (Context cxt) {
+    SignupWorker(Context cxt) {
         context = cxt;
     }
 
     @Override
     protected String doInBackground(String... params){
 
-        String type = params[0];
-//      String login_url = "http://192.168.1.2/login.php";
-        String login_url = "http://ameade.us/Loginrpsx.php";
 
-//        System.out.println();
-//        System.out.println(" URL Validity: " + URLUtil.isValidUrl(login_url));
-//        System.out.println();
+        String firstName = params[0];
+        String lastName = params[1];
+        String username = params[2];
+        String displayName = params[3];
+        String email = params[4];
+        String password1 = params[5];
 
-        if(type.equals("login"))
-        {
+        String signup_url = "http://ameade.us/addUserrpsx.php";
+
             try {
 
-                //get the user entered username and password
-                 user_name = params[1];
-                 password = params[2];
+                JSONObject signup = new JSONObject();
+                signup.put("firstName", firstName);
+                signup.put("lastName", lastName);
+                signup.put("Password", password1);
+                signup.put("Username", username);
+                signup.put("email", email);
+                signup.put("displayName", displayName);
 
-                JSONObject loginVerification = new JSONObject();
-                loginVerification.put("Username", user_name);
-                loginVerification.put("Password", password);
-
-                 //create a URL pointer that points to the file specified by the URL path
-                URL url = new URL(login_url);
+                //create a URL pointer that points to the file specified by the URL path
+                URL url = new URL(signup_url);
                 //open port to allow http connection
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
 //                httpURLConnection.setRequestMethod("POST");
@@ -76,7 +76,7 @@ public class LoginPHPWorker extends AsyncTask<String, Void, String> {
 //                String post_data = URLEncoder.encode("Username", "UTF-8")+"="+URLEncoder.encode(user_name, "UTF-8")+"&"
 //                        +URLEncoder.encode("Password", "UTF-8")+"="+URLEncoder.encode(password, "UTF-8");
 
-                bufferedWriter.write(String.valueOf(loginVerification));
+                bufferedWriter.write(String.valueOf(signup));
                 bufferedWriter.flush();
 
 
@@ -92,27 +92,14 @@ public class LoginPHPWorker extends AsyncTask<String, Void, String> {
 
                 while((line = bufferedReader.readLine()) != null)
                 {
-                    result += line;
-//                    result.append(line);
+                  result += line;
                 }
-
-//                line = result.toString();
-
-//                String[] line2 = line.split(",");
-//                String pattern = "[\"\\\\,]";
-//                String[] jsonObjects = line.split(pattern);
-//
-//                for(int i = 0; i < jsonObjects.length; i++)
-//                {
-//                    System.out.println("jsonObjects["+i+"] = " + jsonObjects[i]);
-//
-//                }
 
                 bufferedReader.close();
                 inputStream.close();
 
                 httpURLConnection.disconnect();
-                
+
                 return result;
 
             } catch (MalformedURLException e) {
@@ -124,7 +111,7 @@ public class LoginPHPWorker extends AsyncTask<String, Void, String> {
             }
 
 
-        }
+
 
         return null;
     }
@@ -132,51 +119,41 @@ public class LoginPHPWorker extends AsyncTask<String, Void, String> {
     @Override
     protected void onPreExecute() {
         alertDialog = new AlertDialog.Builder(context).create();
-        alertDialog.setTitle("Login Status");
+        alertDialog.setTitle("Signup Status");
         alertDialog.hide();
-    }
-
-    public String getDisplayName(String result) throws JSONException {
-
-        JSONObject object = new JSONObject(result);
-
-        String displayName = object.getString("displayName");
-
-        System.out.println("Display Name: " + result);
-        return displayName;
     }
 
     @Override
     protected void onPostExecute(String result) {
 
-        String displayName = "";
-        //start menu if the credentials are correct
-        if(result.equals("\"0\""))
-        {
-            alertDialog.setMessage("Login Unsuccessful. Try Again!");
-            alertDialog.show();
-        }
+            if(result.equals(""))
+            {
 
-        else
-        {
-            alertDialog.setMessage("Login Successful!");
-            alertDialog.show();
-
-             displayName = null;
-            try {
-                displayName = getDisplayName(result);
-            } catch (JSONException e) {
-                e.printStackTrace();
             }
-            Intent menu = new Intent(context, Menu.class);
-            menu.putExtra("user name", user_name);
-            menu.putExtra("display name", displayName);
-            context.startActivity(menu);
-        }
+            alertDialog.setMessage(result);
+            alertDialog.show();
 
 
-       System.out.println("JSON equals: " + result);
-        System.out.println("displayName : " + displayName);
+//
+//        //start menu if the credentials are correct
+//        if(result.equals("\"0\""))
+//        {
+//            alertDialog.setMessage("Login Unsuccessful. Try Again!");
+//            alertDialog.show();
+//        }
+//
+//        else
+//        {
+//            alertDialog.setMessage("Login Successful!");
+//            alertDialog.show();
+//
+//            Intent menu = new Intent(context, Menu.class);
+//            menu.putExtra("user name", user_name);
+//            context.startActivity(menu);
+//        }
+//
+//
+//        System.out.println("JSON equals: " + result);
     }
 
     @Override

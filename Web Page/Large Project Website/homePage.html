@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<meta charset="utf-8" />
+
+  <head>
+    <title>Extreme RPS</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="largePorject.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="largeJS.js"></script>
+  </head>
+
+    <body>
+      <button class="submit">Log In</button>
+      <div id="logBox">
+        <div class="container">
+          <label for="uname"><b>Username</b></label>
+          <input type="text" placeholder="Enter Username" name="uname" required>
+
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+
+          <button class="log">Login</button>
+
+          <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+          </label>
+        </div>
+      </div>
+
+      <div class="qrCode">
+        <div class="topQrContainer">
+        </div>
+
+        <div class="bottomQrContainer">
+        </div>
+      </div>
+
+      <audio id="auto" autoplay="true" volume=>
+        <source src="LaunchMusic.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+
+      <div class="bottomNav">
+        <button class="qrButton">QR</button>
+      </div>
+    </body>
+
+<script>
+var audio = document.getElementById("auto");
+auto.volume = 0.1;
+
+</script>
+
+</html>

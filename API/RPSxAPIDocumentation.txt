@@ -16,7 +16,7 @@ to signify that the displayName is in use. Returns 3 to signify the email
 is in use.
 
 addUserrpsx.php(String Username, String(Hash) Password, String firstName,
-                String lastName, String displayName, String Email)
+                String lastName, String displayName, String email)
 {
 
   Returns 1, 0, 2, or 3

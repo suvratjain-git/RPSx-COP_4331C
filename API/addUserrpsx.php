@@ -15,14 +15,26 @@
 	}
 	else
 	{
-		$sql = "INSERT INTO Players_DB (Username,Password,firstName,lastName,displayName,email) VALUES ('" . $userName ."', '" . $passWord ."', '" . $firstName ."', '" . $lastName ."', '" . $displayName . "', '" . $email . "')";
-		if($result = $conn->query($sql) != TRUE)
+		$temp = checkEmail($conn, $inData);
+		if(checkDisplayName($conn, $inData) == 1 && $temp == 1)
 		{
-			returnWithError("0");
+			$sql = "INSERT INTO Players_DB (Username,Password,firstName,lastName,displayName,email) VALUES ('" . $userName ."', '" . $passWord ."', '" . $firstName ."', '" . $lastName ."', '" . $displayName . "', '" . $email . "')";
+			if($result = $conn->query($sql) != TRUE)
+			{
+				returnWithError("0");
+			}
+			else
+			{
+				returnWithError("1");
+			}
+		}
+		else if($temp == 0)
+		{
+			returnWithError("3");
 		}
 		else
 		{
-			returnWithError("1");
+			returnWithError("2");
 		}
 		$conn->close();
 	}
@@ -32,6 +44,34 @@
 	function getRequestInfo()
 	{
 		return json_decode(file_get_contents('php://input'), true);
+	}
+
+	function checkDisplayName($conn, $inData)
+	{
+		$sql = "SELECT * FROM Players_DB WHERE displayName='" . $inData["displayName"] . "'";
+		$result = $conn->query($sql);
+		if ($result->num_rows > 0)
+		{
+			return 0;
+		}
+		else
+		{
+			return 1;
+		}
+	}
+
+	function checkEmail($conn, $inData)
+	{
+		$sql = "SELECT * FROM Players_DB WHERE email='" . $inData["email"] . "'";
+		$result = $conn->query($sql);
+		if ($result->num_rows > 0)
+		{
+			return 0;
+		}
+		else
+		{
+			return 1;
+		}
 	}
 
 	function sendResultInfoAsJson($obj)

@@ -39,7 +39,7 @@ public class ForgotPasswordWorker extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... params){
 
         String email = params[0];
-        String forgot_password_url = "http://ameade.us/addUserrpsx.php";
+        String forgot_password_url = "http://ameade.us/sendPasswordEmailrpsx.php";
 
         try {
 
@@ -98,8 +98,16 @@ public class ForgotPasswordWorker extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String result) {
 
-        Toast.makeText(context, "Email sent:)!", Toast.LENGTH_LONG).show();
-        ((Activity)context).finish();
+        if(result.equals("\"0\""))
+        {
+            Toast.makeText(context, "Sorry, but this e-mail does not exist...", Toast.LENGTH_LONG).show();
+        }
+        else if (result.equals("\"1\""))
+        {
+            Toast.makeText(context, "Email sent!", Toast.LENGTH_LONG).show();
+            ((Activity)context).finish();
+        }
+
 
     }
 

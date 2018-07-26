@@ -2,8 +2,12 @@ package com.example.suvratjain.firstapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class ForgotPassword extends AppCompatActivity {
 
@@ -15,12 +19,24 @@ public class ForgotPassword extends AppCompatActivity {
 
     }
 
-    //return to main activity
-    public void back(View view) {
-        finish();
+
+    public void getCredentials(View view)
+    {
+        EditText ue = findViewById(R.id.emailEntry);
+        String user_email = ue.getText().toString();
+
+        if(isValidEmail(user_email))
+        {
+            ForgotPasswordWorker forgotPasswordWorker = new ForgotPasswordWorker(this);
+            forgotPasswordWorker.execute(user_email);
+        }
+        else
+        {
+            Toast.makeText(this, "Invalid E-Mail!", Toast.LENGTH_LONG).show();
+        }
     }
 
-    //get password
-    public void getPassword(View view) {
+    public static boolean isValidEmail(CharSequence target) {
+        return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
     }
 }

@@ -25,7 +25,7 @@
     <string name="exit">Exit</string>
 
     <!-- ForgotPassword.java Class Strings -->
-    <string name="send_password">Send Password</string>
+    <string name="send_password">Send Credentials</string>
     <string name="back">Back</string>
 
     <!-- one_v_one.java Class Strings -->

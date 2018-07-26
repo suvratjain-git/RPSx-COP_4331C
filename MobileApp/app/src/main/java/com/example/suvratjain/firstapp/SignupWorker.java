@@ -1,5 +1,6 @@
 package com.example.suvratjain.firstapp;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -28,10 +29,8 @@ import static java.lang.Thread.sleep;
 public class SignupWorker extends AsyncTask<String, Void, String> {
 
     Context context;
-    AlertDialog alertDialog;
-    private boolean authorization = false;
-    private String user_name;
-    private String password;
+//    AlertDialog alertDialog;
+
 
 
     SignupWorker(Context cxt) {
@@ -118,20 +117,35 @@ public class SignupWorker extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPreExecute() {
-        alertDialog = new AlertDialog.Builder(context).create();
-        alertDialog.setTitle("Signup Status");
-        alertDialog.hide();
+//        alertDialog = new AlertDialog.Builder(context).create();
+//        alertDialog.setTitle("Status");
+//        alertDialog.hide();
     }
 
     @Override
     protected void onPostExecute(String result) {
 
-            if(result.equals(""))
-            {
 
+            if(result.equals("\"0\""))
+            {
+                Toast.makeText(context, "Connection Error!!", Toast.LENGTH_LONG).show();
             }
-            alertDialog.setMessage(result);
-            alertDialog.show();
+            else if (result.equals("\"1\""))
+            {
+                Toast.makeText(context, "User added successfully!", Toast.LENGTH_LONG).show();
+                ((Activity)context).finish();
+            }
+            else if (result.equals("\"2\""))
+            {
+                Toast.makeText(context, "Sorry, \"Display Name\" already in use. Try again!", Toast.LENGTH_LONG).show();
+            }
+            else if (result.equals("\"3\""))
+            {
+//                alertDialog.setMessage("Sorry, E-mail already in use. Try again!");
+//                alertDialog.show();
+                Toast.makeText(context, "Sorry, \"E-Mail\" already in use. Try again!", Toast.LENGTH_LONG).show();
+            }
+
 
 
 //

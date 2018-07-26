@@ -1,5 +1,6 @@
 package com.example.suvratjain.firstapp;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -153,30 +154,34 @@ public class LoginPHPWorker extends AsyncTask<String, Void, String> {
         //start menu if the credentials are correct
         if(result.equals("\"0\""))
         {
-            alertDialog.setMessage("Login Unsuccessful. Try Again!");
-            alertDialog.show();
+//            alertDialog.setMessage("Login Unsuccessful. Try Again!");
+//            alertDialog.show();
+            Toast.makeText(context, "Invalid Login. Please try again...", Toast.LENGTH_LONG).show();
         }
 
         else
         {
-            alertDialog.setMessage("Login Successful!");
-            alertDialog.show();
+            Toast.makeText(context, "Login Successful. Welcome!", Toast.LENGTH_LONG).show();
+//            alertDialog.setMessage("Login Successful!");
+//
+//            alertDialog.show();
 
-             displayName = null;
-            try {
-                displayName = getDisplayName(result);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+//             displayName = null;
+//            try {
+//                displayName = getDisplayName(result);
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
             Intent menu = new Intent(context, Menu.class);
             menu.putExtra("user name", user_name);
-            menu.putExtra("display name", displayName);
+//            menu.putExtra("display name", displayName);
             context.startActivity(menu);
+
         }
 
 
-       System.out.println("JSON equals: " + result);
-        System.out.println("displayName : " + displayName);
+//       System.out.println("JSON equals: " + result);
+//        System.out.println("displayName : " + displayName);
     }
 
     @Override

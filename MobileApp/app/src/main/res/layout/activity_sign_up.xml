@@ -9,18 +9,18 @@
     <ScrollView
         android:id="@+id/scrollView6"
         android:layout_width="358dp"
-        android:layout_height="500dp"
+        android:layout_height="439dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/SignUpButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.321">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -79,9 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
-
-                android:maxLength="6" />
+                android:inputType="textPersonName" />
 
             <TextView
                 android:id="@+id/email"
@@ -94,7 +92,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textWebEmailAddress" />
 
             <TextView
                 android:id="@+id/textView8"

@@ -102,6 +102,16 @@ requestChoicerpsx.php(String room)
 }
 
 
+Takes in an email and sends the email a message saying the users account
+info. Returns 1 for success and 0 for failure.
+
+sendPasswordEmailrpsx.php(String email)
+{
+
+	Returns 1 or 0	
+}
+
+
 Takes a room, the displayName, and their choice. The API will set the
 displayNames choice to what they pick. Returns 1 on success and 0 on connection
 error or query error.
@@ -153,12 +163,12 @@ verifyChoicerpsx.php(String room)
 }
 
 
-Takes in a room number and returns 1 if a room has two players or 0 if the room
+Takes in a room number and returns displayNames if a room has two players or 0 if the room
 is still missing a player. This should be called after a player has hosted a
 room and continuously called until the room is full.
 
 verifyFullRoomrpsx.php(String room)
 {
 
-  Returns 1 or 0
+  Returns user_1: "displayName", user_2: "displayName" or 0
 }

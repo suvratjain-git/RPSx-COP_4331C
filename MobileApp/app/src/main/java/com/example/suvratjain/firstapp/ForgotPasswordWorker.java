@@ -46,18 +46,17 @@ public class ForgotPasswordWorker extends AsyncTask<String, Void, String> {
             JSONObject jsonObject = new JSONObject();
             URL url = new URL(forgot_password_url);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+            httpURLConnection.setDoOutput(true);
+            httpURLConnection.setDoInput(true);
+
             OutputStream outputStream = httpURLConnection.getOutputStream();
-            InputStream inputStream = httpURLConnection.getInputStream();
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+
             String result = "";
             String line;
 
 
             jsonObject.put("email", email);
-
-            httpURLConnection.setDoOutput(true);
-            httpURLConnection.setDoInput(true);
 
             bufferedWriter.write(String.valueOf(jsonObject));
             bufferedWriter.flush();
@@ -65,11 +64,16 @@ public class ForgotPasswordWorker extends AsyncTask<String, Void, String> {
             bufferedWriter.close();
             outputStream.close();
 
+            InputStream inputStream = httpURLConnection.getInputStream();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+
+
             while((line = bufferedReader.readLine()) != null)
             {
                 result += line;
             }
 
+            System.out.println("Result = "  + result);
             bufferedReader.close();
             inputStream.close();
             httpURLConnection.disconnect();
@@ -98,7 +102,11 @@ public class ForgotPasswordWorker extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String result) {
 
-        if(result.equals("\"0\""))
+        if(result == null)
+        {
+            Toast.makeText(context, "Connection Error!", Toast.LENGTH_LONG).show();
+        }
+        else if(result.equals("\"0\""))
         {
             Toast.makeText(context, "Sorry, but this e-mail does not exist...", Toast.LENGTH_LONG).show();
         }

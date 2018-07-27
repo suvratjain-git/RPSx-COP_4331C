@@ -17,7 +17,8 @@
       $row = $result->fetch_assoc();
       if($row["user_1"] != null && $row["user_2"] != null)
       {
-          returnWithError("1");
+				  $data = array("user_1"=>$row["user_1"], "user_2"=>$row["user_2"]);
+          returnWithError($data);
       }
       else
       {

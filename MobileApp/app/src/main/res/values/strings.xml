@@ -39,7 +39,10 @@
     <string name="sound">Enable Sound</string>
     <string name="accountLink"><a href="http://www.google.com">Change Account Info</a></string>
     <string name="report"><a href="http://www.facebook.com">Change Account Info</a></string>
-    <!--<string name="accountLink">Change Account Info</string>-->
-    <!--<string name="report">Report a Problem</string>-->
+
+    <!-- CreateRoom.java Class Strings -->
+    <string name="create">Create Room</string>
+
+
 
 </resources>

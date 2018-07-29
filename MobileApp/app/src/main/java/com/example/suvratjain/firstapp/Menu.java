@@ -15,7 +15,8 @@ public class Menu extends AppCompatActivity {
     private String[] choices = new String[]{"Create Room", "Enter Room"};
     private AlertDialog gameOptionsDialog;
 
-
+    Intent main = getIntent();
+    Bundle b = main.getExtras();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +50,7 @@ public class Menu extends AppCompatActivity {
     public String getUsername()
     {
 
-        Intent main = getIntent();
-        Bundle b = main.getExtras();
+
         String username = null;
 
         if(b!=null){
@@ -101,12 +101,13 @@ public class Menu extends AppCompatActivity {
                         public void run() {
                             try {
                                 super.run();
-                                sleep(1500);  //Delay of 1.5 seconds
+                                sleep(1000);  //Delay of 1 second
                             } catch (Exception e) {
 
                             } finally {
 
                                 Intent i = new Intent(Menu.this, CreateRoom.class);
+                                i.putExtra("display name", (String)b.get("display name"));
                                 startActivity(i);
 
                             }
@@ -124,7 +125,7 @@ public class Menu extends AppCompatActivity {
                         public void run() {
                             try {
                                 super.run();
-                                sleep(1500);  //Delay of 1.5 seconds
+                                sleep(1000);  //Delay of 1 second
                             } catch (Exception e) {
 
                             } finally {

@@ -61,7 +61,7 @@
 
 	function returnWithError($err)
 	{
-		$retValue = json_encode($data);
+		$retValue = json_encode($err);
 		sendResultInfoAsJson($retValue);
 	}
 

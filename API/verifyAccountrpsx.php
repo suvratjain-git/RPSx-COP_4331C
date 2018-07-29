@@ -2,10 +2,6 @@
 
 	$inData = getRequestInfo();
 
-  //$userName = $inData["Username"];
-  //$displayName = $inData["displayName"];
-  //$email = $inData["email"];
-
 	$conn = new mysqli("localhost", "RudeDude", "cop4331!", "RPSx");
 
 	if ($conn->connect_error)

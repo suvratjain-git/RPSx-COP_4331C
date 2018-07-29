@@ -3,6 +3,7 @@
 	$inData = getRequestInfo();
 	$searchCount = 0;
   $dataArray = [];
+	$data = [];
   $i = 0;
 
 	$conn = new mysqli("localhost", "RudeDude", "cop4331!", "RPSx");
@@ -30,11 +31,7 @@
           {
             break;
           }
-          if($i > 0)
-          {
-            $data .="?";
-          }
-          $data .='"' . $x . "," . $xVal . '"';
+          $data += [$x => $xVal];
           $i++;
         }
 				returnWithInfo($data);
@@ -64,7 +61,7 @@
 
 	function returnWithError($id)
 	{
-		$retValue = '{"id":' . $id . '}';
+		$retValue = json_encode($id);
 		sendResultInfoAsJson($retValue);
 	}
 

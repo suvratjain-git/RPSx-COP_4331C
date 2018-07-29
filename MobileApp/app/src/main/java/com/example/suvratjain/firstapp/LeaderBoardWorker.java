@@ -16,8 +16,8 @@ public class LeaderBoardWorker extends AsyncTask<Void, Void, Void>
     Context context;
     final private String loss_url = "http://ameade.us/API/getLossBoardrpsx.php";
     final private String win_url = "http://ameade.us/API/getWinBoardrpsx.php";
-    private String jsonWinBoardString = null;
-    private String jsonLossBoardString = null;
+    private StringBuilder jsonWinBoardString = new StringBuilder();
+    private StringBuilder jsonLossBoardString = new StringBuilder();
 
 
     LeaderBoardWorker (Context ctx)
@@ -48,8 +48,8 @@ public class LeaderBoardWorker extends AsyncTask<Void, Void, Void>
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
 
-        String winResults = jsonWinBoardString;
-        String lossResults = jsonLossBoardString;
+        String winResults = jsonWinBoardString.toString();
+        String lossResults = jsonLossBoardString.toString();
 
         Intent startLeaderBoardActivity = new Intent(context, LeaderBoard.class);
         startLeaderBoardActivity.putExtra("Win Data", winResults);
@@ -73,7 +73,8 @@ public class LeaderBoardWorker extends AsyncTask<Void, Void, Void>
         String line;
         while((line = winBufferedReader.readLine()) != null)
         {
-            jsonWinBoardString += line;
+//            jsonWinBoardString += line;
+            jsonWinBoardString.append(line);
         }
 
         winBufferedReader.close();
@@ -96,7 +97,8 @@ public class LeaderBoardWorker extends AsyncTask<Void, Void, Void>
         String line;
         while((line = lossBufferedReader.readLine()) != null)
         {
-            jsonLossBoardString += line;
+//            jsonLossBoardString += line;
+             jsonLossBoardString.append(line);
         }
 
         lossBufferedReader.close();

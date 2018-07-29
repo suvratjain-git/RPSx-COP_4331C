@@ -34,6 +34,7 @@
     <!-- LeaderBoard.java Class Strings -->
     <string name="wins">Wins</string>
     <string name="losses">Losses</string>
+    <string name="display_names">Display Name</string>
 
     <!-- Settings.java Class Strings -->
     <string name="sound">Enable Sound</string>

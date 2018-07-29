@@ -37,23 +37,52 @@
                 tools:layout_editor_absoluteX="31dp"
                 tools:layout_editor_absoluteY="21dp" />
 
-            <TableLayout
-                android:id="@+id/winsTable"
+            <ScrollView
+                android:id="@+id/winScroll"
                 android:layout_width="match_parent"
-                android:layout_height="186dp">
+                android:layout_height="236dp">
 
-                <TableRow
-                    android:layout_width="250dp"
-                    android:layout_height="71dp" >
-                    <TextView
-                        android:layout_column="1"
-                        android:text="Save..."
-                        android:padding="3dip" />
-                </TableRow>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TableLayout
+                        android:id="@+id/winTable"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TableRow
+                            android:id="@+id/winTableRow0"
+                            android:layout_width="250dp"
+                            android:layout_height="71dp">
+
+                            <TextView
+                                android:id="@+id/winLabel1"
+                                android:layout_width="193dp"
+                                android:layout_column="1"
+                                android:gravity="center"
+                                android:padding="3dip"
+                                android:text="@string/display_names"
+                                android:textColor="@android:color/background_dark"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/winLabel2"
+                                android:layout_width="193dp"
+                                android:layout_height="wrap_content"
+                                android:layout_column="1"
+                                android:gravity="center"
+                                android:padding="3dip"
+                                android:text="@string/wins"
+                                android:textColor="@android:color/background_dark"
+                                android:textStyle="bold" />
+                        </TableRow>
 
 
-
-            </TableLayout>
+                    </TableLayout>
+                </LinearLayout>
+            </ScrollView>
 
             <TextView
                 android:id="@+id/losses"
@@ -66,21 +95,53 @@
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="293dp" />
 
-            <TableLayout
-                android:id="@+id/lossesTable"
+            <ScrollView
+                android:id="@+id/lossScroll"
                 android:layout_width="match_parent"
-                android:layout_height="232dp">
+                android:layout_height="match_parent">
 
-                <TableRow
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" >
-                    <TextView
-                    android:layout_column="1"
-                    android:text="Save..."
-                    android:padding="3dip" />
-                </TableRow>
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-            </TableLayout>
+                    <TableLayout
+                        android:id="@+id/lossTable"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TableRow
+                            android:id="@+id/lossTableRow0"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/lossLabel1"
+                                android:layout_width="193dp"
+                                android:layout_height="wrap_content"
+                                android:layout_column="1"
+                                android:gravity="center"
+                                android:padding="3dip"
+                                android:text="@string/display_names"
+                                android:textColor="@android:color/background_dark"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/lossLabel2"
+                                android:layout_width="193dp"
+                                android:layout_height="wrap_content"
+                                android:layout_column="1"
+                                android:gravity="center"
+                                android:padding="3dip"
+                                android:text="@string/losses"
+                                android:textColor="@android:color/background_dark"
+                                android:textStyle="bold" />
+
+                        </TableRow>
+
+                    </TableLayout>
+                </LinearLayout>
+            </ScrollView>
 
         </LinearLayout>
     </ScrollView>

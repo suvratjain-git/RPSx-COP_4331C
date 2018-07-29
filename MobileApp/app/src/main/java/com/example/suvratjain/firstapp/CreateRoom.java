@@ -27,7 +27,7 @@ public class CreateRoom extends AppCompatActivity {
         String room_number = roomNumber.getText().toString();
         displayName = (String)b.get("display name");
 
-        NewSessionWorker newSession = new NewSessionWorker(this);
+        NewRoomWorker newSession = new NewRoomWorker(this);
         newSession.execute(room_number, displayName);
         finish();
     }

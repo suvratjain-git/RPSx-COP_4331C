@@ -30,9 +30,9 @@ public class LoginPHPWorker extends AsyncTask<String, Void, String> {
 
     Context context;
     AlertDialog alertDialog;
-    private boolean authorization = false;
-    private String user_name;
-    private String password;
+//    private boolean authorization = false;
+    private String user_name = null;
+    private String password = null;
 
 
     LoginPHPWorker (Context cxt) {

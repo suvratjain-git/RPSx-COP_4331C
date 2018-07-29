@@ -39,7 +39,7 @@
             android:name=".ForgotPassword"
             android:label="Retrieve Password" />
         <activity
-            android:name=".NewSessionWorker"
+            android:name=".NewRoomWorker"
             android:label="Create a Session" />
         <activity
             android:name=".EnterRoom"

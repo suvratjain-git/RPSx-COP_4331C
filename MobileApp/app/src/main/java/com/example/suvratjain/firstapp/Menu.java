@@ -15,13 +15,16 @@ public class Menu extends AppCompatActivity {
     private String[] choices = new String[]{"Create Room", "Enter Room"};
     private AlertDialog gameOptionsDialog;
 
-    Intent main = getIntent();
-    Bundle b = main.getExtras();
+    Intent main;
+    Bundle b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        main = getIntent();
+        b = main.getExtras();
 
         userNameField = findViewById(R.id.userName);
         displayNameField = findViewById(R.id.displayName);

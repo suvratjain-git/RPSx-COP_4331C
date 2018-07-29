@@ -10,8 +10,7 @@ public class CreateRoom extends AppCompatActivity {
 
     private TextView roomNumber;
     private String displayName;
-    Intent i = getIntent();
-    Bundle b = i.getExtras();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,12 +22,17 @@ public class CreateRoom extends AppCompatActivity {
 
     public void createRoom(View view)
     {
+        Intent i = getIntent();
+        Bundle b = i.getExtras();
+
+        displayName = (String)b.get("display name");
+
         roomNumber = findViewById(R.id.roomNum);
         String room_number = roomNumber.getText().toString();
-        displayName = (String)b.get("display name");
+
 
         NewRoomWorker newSession = new NewRoomWorker(this);
         newSession.execute(room_number, displayName);
-        finish();
+
     }
 }

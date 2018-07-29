@@ -15,16 +15,12 @@ public class Menu extends AppCompatActivity {
     private String[] choices = new String[]{"Create Room", "Enter Room"};
     private AlertDialog gameOptionsDialog;
 
-    Intent main;
-    Bundle b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        main = getIntent();
-        b = main.getExtras();
 
         userNameField = findViewById(R.id.userName);
         displayNameField = findViewById(R.id.displayName);
@@ -52,7 +48,8 @@ public class Menu extends AppCompatActivity {
 
     public String getUsername()
     {
-
+        Intent main = getIntent();
+        Bundle b = main.getExtras();
 
         String username = null;
 
@@ -67,6 +64,7 @@ public class Menu extends AppCompatActivity {
     {
         Intent main = getIntent();
         Bundle b = main.getExtras();
+
         String displayName = null;
 
         if(b!=null){
@@ -81,6 +79,8 @@ public class Menu extends AppCompatActivity {
     public void openNewSession(View view)
     {
 
+        final String displayName = getDisplayName();
+
         final AlertDialog.Builder gameOptions = new AlertDialog.Builder(Menu.this);
         gameOptions.setTitle("Choose Option");
 
@@ -93,6 +93,8 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int item)
             {
+
+
 
                 if (item == 0)
                 {
@@ -110,7 +112,7 @@ public class Menu extends AppCompatActivity {
                             } finally {
 
                                 Intent i = new Intent(Menu.this, CreateRoom.class);
-                                i.putExtra("display name", (String)b.get("display name"));
+                                i.putExtra("display name", displayName);
                                 startActivity(i);
 
                             }
@@ -134,6 +136,7 @@ public class Menu extends AppCompatActivity {
                             } finally {
 
                                 Intent i = new Intent(Menu.this, EnterRoom.class);
+                                i.putExtra("display name", displayName);
                                 startActivity(i);
 
                             }

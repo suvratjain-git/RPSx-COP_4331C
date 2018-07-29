@@ -21,13 +21,14 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class NewRoomWorker extends AsyncTask<String, Void, String> {
+public class EnterRoomWorker extends AsyncTask<String, Void, String> {
 
     Context context;
     String roomNum;
     String displayName;
+    private boolean status = false;
 
-    NewRoomWorker(Context ctx)
+    EnterRoomWorker(Context ctx)
     {
         context = ctx;
     }
@@ -36,7 +37,7 @@ public class NewRoomWorker extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... params) {
 
         //API URL string
-        String createRoom_URL = "http://ameade.us/API/createRoomrpsx.php";
+        String createRoom_URL = "http://ameade.us/API/joinRoomrpsx.php";
 
         //get the room number and display of the user
         roomNum = params[0];
@@ -104,10 +105,14 @@ public class NewRoomWorker extends AsyncTask<String, Void, String> {
 
         if(result.equals("\"0\""))
         {
-            Toast.makeText(context, "Connection Error!", Toast.LENGTH_LONG).show();
+            status = false;
+//            Toast.makeText(context, "Connection Error!", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "This Room is Full! Please try another Room Number.", Toast.LENGTH_LONG).show();
         }
         else if(result.equals("\"1\""))
         {
+            status = true;
+
             String str = "Welcome to Game Room #" + roomNum;
             Toast.makeText(context, str, Toast.LENGTH_LONG).show();
 
@@ -115,12 +120,16 @@ public class NewRoomWorker extends AsyncTask<String, Void, String> {
             i.putExtra("display name", displayName);
             context.startActivity(i);
         }
-        else if(result.equals("\"2\""))
-        {
-            Toast.makeText(context, "This Room is already exists! Please try another set of digits.", Toast.LENGTH_LONG).show();
-        }
+//        else if(result.equals("\"2\""))
+//        {
+////            Toast.makeText(context, "This Room is Full! Please try another Room Number.", Toast.LENGTH_LONG).show();
+//        }
 
     }
 
 
+    public boolean complete()
+    {
+        return status;
+    }
 }

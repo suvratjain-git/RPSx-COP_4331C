@@ -10,7 +10,6 @@ import android.widget.Toast;
 public class EnterRoom extends AppCompatActivity {
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,17 +20,29 @@ public class EnterRoom extends AppCompatActivity {
 
     public void enterRoom(View view) {
 
-        TextView roomNum = findViewById(R.id.gamerIDString);
-        String roomNumber = roomNum.getText().toString();
+        Intent i = getIntent();
+        Bundle b = i.getExtras();
 
-        String toastText = "Entering room #" + roomNumber;
+        String displayName = (String)b.get("display name");
+        TextView roomNumber = findViewById(R.id.roomNum);
+        String room_number = roomNumber.getText().toString();
+
+        EnterRoomWorker enterSession = new EnterRoomWorker(this);
+        enterSession.execute(room_number, displayName);
+
+        String toastText = "Entering room #" + room_number;
         Toast.makeText(EnterRoom.this, toastText, Toast.LENGTH_LONG).show();
 
-        Intent i = new Intent(this, Game.class);
-//        i.putExtra("Room Number", roomNumber);
-        startActivity(i);
+        if(enterSession.complete())
+        {
+            finish();
+        }
 
-        finish();
+//        Intent i = new Intent(this, Game.class);
+////        i.putExtra("Room Number", roomNumber);
+//        startActivity(i);
+//
+//        finish();
     }
 
 

@@ -1,5 +1,6 @@
 package com.example.suvratjain.firstapp;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -114,6 +115,7 @@ public class NewRoomWorker extends AsyncTask<String, Void, String> {
             Intent i = new Intent(context, Game.class);
             i.putExtra("display name", displayName);
             context.startActivity(i);
+            ((Activity)context).finish();
         }
         else if(result.equals("\"2\""))
         {

@@ -1,9 +1,14 @@
 package com.example.suvratjain.firstapp;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.webkit.WebView;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -22,7 +27,25 @@ public class Settings extends AppCompatActivity {
         displayNameField = findViewById(R.id.displayName);
         displayNameField_value = findViewById(R.id.displayName_value);
 
-        userNameField.setText("Username: ");
+        final Switch onOffSwitch = findViewById(R.id.sound);
+        onOffSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if(isChecked)
+                {
+                    onOffSwitch.setText("On");
+                }
+                else
+                {
+                    onOffSwitch.setText("Off");
+                }
+            }
+
+        });
+
+        userNameField.setText("UserName: ");
         userNameField_value.setText(getUsername());
         displayNameField.setText("DisplayName: ");
         displayNameField_value.setText(getDisplayName());
@@ -55,8 +78,34 @@ public class Settings extends AppCompatActivity {
         return displayName;
     }
 
-    public void back(View view)
+
+    public void openChangeAccountWebpage(View view)
     {
-        finish();
+//        TextView changeAccountInfo = findViewById(R.id.changeAccountInfo);
+
+        Intent i = new Intent(this, WebBrowser.class);
+        i.putExtra("Key", "Change Info");
+        startActivity(i);
+
+//        changeAccountInfo.setPaintFlags(changeAccountInfo.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
+//        WebView webview = new WebView(this);
+//        setContentView(webview);
+//        webview.loadUrl("http://www.google.com");
+
+    }
+
+    public void openReportAProblemWebpage(View view)
+    {
+//        TextView reportAProblem = findViewById(R.id.reportAProblem);
+//        reportAProblem.setPaintFlags(reportAProblem.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
+        Intent i = new Intent(this, WebBrowser.class);
+        i.putExtra("Key", "Report Problem");
+        startActivity(i);
+
+//        WebView webview = new WebView(this);
+//        setContentView(webview);
+//        webview.loadUrl("http://www.facebook.com");
     }
 }

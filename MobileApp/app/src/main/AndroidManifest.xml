@@ -42,10 +42,17 @@
             android:name=".NewSession"
             android:label="Create a Session" />
         <activity
-            android:name=".OneVOne"
-            android:label="Enter Gamer ID" />
-        <activity android:name=".Game"
-            android:theme="@style/AppTheme"></activity>
+            android:name=".EnterRoom"
+            android:label="Enter Room" />
+        <activity
+            android:name=".Game"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".WebBrowser"
+            android:label="Web Browser" />
+        <activity
+            android:name=".CreateRoom"
+            android:label="Create Room" />
     </application>
 
 </manifest>

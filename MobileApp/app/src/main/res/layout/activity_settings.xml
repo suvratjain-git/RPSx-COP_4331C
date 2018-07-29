@@ -29,7 +29,6 @@
             android:text="TextView"
             android:textColor="@android:color/background_dark"
             android:textSize="24sp"
-            android:textStyle="bold"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="34dp" />
 
@@ -38,13 +37,14 @@
             android:layout_width="match_parent"
             android:layout_height="67dp"
             android:layout_weight="1"
-            android:gravity="left"
+            android:gravity="center"
             android:text="TextView"
             android:textColor="@color/design_default_color_primary"
             android:textSize="24sp"
             android:textStyle="bold"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="34dp" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -59,9 +59,10 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/scrollView5"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.975">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/userName"
@@ -81,11 +82,12 @@
             android:layout_width="match_parent"
             android:layout_height="27dp"
             android:layout_weight="1"
-            android:gravity="left"
+            android:gravity="center"
             android:text="TextView"
             android:textAllCaps="false"
             android:textColor="@color/design_default_color_primary"
             android:textSize="18sp"
+            android:textStyle="bold"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="108dp" />
     </LinearLayout>
@@ -93,7 +95,7 @@
     <ScrollView
         android:id="@+id/scrollView5"
         android:layout_width="352dp"
-        android:layout_height="295dp"
+        android:layout_height="221dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
@@ -130,23 +132,23 @@
                     android:textColor="@android:color/background_dark"
                     android:textSize="18sp"
                     android:typeface="normal"
-                    app:layout_constraintEnd_toStartOf="@+id/switch1"
+                    app:layout_constraintEnd_toStartOf="@+id/sound"
                     app:layout_constraintHorizontal_bias="0.46"
                     app:layout_constraintStart_toStartOf="parent"
                     tools:layout_editor_absoluteY="199dp" />
 
                 <Switch
-                    android:id="@+id/switch1"
+                    android:id="@+id/sound"
                     android:layout_width="74dp"
                     android:layout_height="45dp"
                     android:layout_weight="1"
-                    android:text="On"
+                    android:text="Off"
                     tools:layout_editor_absoluteX="291dp"
                     tools:layout_editor_absoluteY="328dp" />
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textView10"
+                android:id="@+id/changeAccountInfo"
                 android:layout_width="match_parent"
                 android:layout_height="42dp"
                 android:layout_marginBottom="8dp"
@@ -155,18 +157,23 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:autoLink="web"
+                android:clickable="true"
+                android:focusable="true"
+                android:linksClickable="true"
+                android:onClick="openChangeAccountWebpage"
                 android:text="@string/accountLink"
                 android:textColor="@android:color/background_dark"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/backButton"
-                app:layout_constraintEnd_toStartOf="@+id/switch1"
+                app:layout_constraintEnd_toStartOf="@+id/sound"
                 app:layout_constraintHorizontal_bias="0.081"
                 app:layout_constraintStart_toStartOf="@+id/scrollView5"
                 app:layout_constraintTop_toBottomOf="@+id/soundText"
                 app:layout_constraintVertical_bias="0.255" />
 
             <TextView
-                android:id="@+id/textView11"
+                android:id="@+id/reportAProblem"
                 android:layout_width="match_parent"
                 android:layout_height="42dp"
                 android:layout_marginBottom="8dp"
@@ -175,24 +182,20 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:autoLink="web"
+                android:clickable="true"
+                android:focusable="true"
+                android:linksClickable="true"
+                android:onClick="openReportAProblemWebpage"
                 android:text="@string/report"
                 android:textColor="@android:color/background_dark"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/backButton"
-                app:layout_constraintEnd_toStartOf="@+id/switch1"
+                app:layout_constraintEnd_toStartOf="@+id/sound"
                 app:layout_constraintHorizontal_bias="0.072"
                 app:layout_constraintStart_toStartOf="@+id/scrollView5"
                 app:layout_constraintTop_toBottomOf="@+id/soundText"
                 app:layout_constraintVertical_bias="0.832" />
-
-            <Button
-                android:id="@+id/backButton"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:onClick="back"
-                android:text="@string/back"
-                tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="142dp" />
 
         </LinearLayout>
     </ScrollView>

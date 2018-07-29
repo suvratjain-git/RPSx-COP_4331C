@@ -28,7 +28,7 @@
     <string name="send_password">Send Credentials</string>
     <string name="back">Back</string>
 
-    <!-- one_v_one.java Class Strings -->
+    <!-- activity_enter_room.java Class Strings -->
     <string name="enter">Enter Room</string>
 
     <!-- LeaderBoard.java Class Strings -->
@@ -37,7 +37,9 @@
 
     <!-- Settings.java Class Strings -->
     <string name="sound">Enable Sound</string>
-    <string name="accountLink">Change Account Info</string>
-    <string name="report">Report a Problem</string>
+    <string name="accountLink"><a href="http://www.google.com">Change Account Info</a></string>
+    <string name="report"><a href="http://www.facebook.com">Change Account Info</a></string>
+    <!--<string name="accountLink">Change Account Info</string>-->
+    <!--<string name="report">Report a Problem</string>-->
 
 </resources>

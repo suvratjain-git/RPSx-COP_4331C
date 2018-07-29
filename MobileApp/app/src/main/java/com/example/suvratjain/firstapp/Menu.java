@@ -12,7 +12,7 @@ import android.widget.Toast;
 public class Menu extends AppCompatActivity {
 
     private TextView userNameField, displayNameField, displayNameField_value, userNameField_value;
-    private String[] choices = new String[]{"Tournament", "1v1"};
+    private String[] choices = new String[]{"Create Room", "Enter Room"};
     private AlertDialog gameOptionsDialog;
 
 
@@ -27,7 +27,7 @@ public class Menu extends AppCompatActivity {
         userNameField_value = findViewById(R.id.userName_value);
         displayNameField_value = findViewById(R.id.displayName_value);
 
-        userNameField.setText("Username: ");
+        userNameField.setText("UserName: ");
         userNameField_value.setText(getUsername());
         displayNameField.setText("DisplayName: ");
         displayNameField_value.setText(getDisplayName());
@@ -79,11 +79,11 @@ public class Menu extends AppCompatActivity {
     {
 
         final AlertDialog.Builder gameOptions = new AlertDialog.Builder(Menu.this);
-        gameOptions.setTitle("Choose Playing Mode");
+        gameOptions.setTitle("Choose Option");
 
-        final AlertDialog workInProgress = new AlertDialog.Builder(this).create();
-        workInProgress.setTitle("Sorry!");
-        workInProgress.setMessage("Due to lack of time and resources this feature is currently unavailable. Please check back soon!");
+//        final AlertDialog workInProgress = new AlertDialog.Builder(this).create();
+//        workInProgress.setTitle("Sorry!");
+//        workInProgress.setMessage("Due to lack of time and resources this feature is currently unavailable. Please check back soon!");
 
         gameOptions.setSingleChoiceItems(choices, -1, new DialogInterface.OnClickListener()
         {
@@ -93,8 +93,26 @@ public class Menu extends AppCompatActivity {
 
                 if (item == 0)
                 {
-//                  Toast.makeText(Menu.this, "Tournaments are still in progress. Thank you for your patience", Toast.LENGTH_LONG).show();
-                    workInProgress.show();
+                  Toast.makeText(Menu.this, "Please wait...", Toast.LENGTH_LONG).show();
+//                    workInProgress.show();
+
+                    Thread welcomeThread = new Thread() {
+                        @Override
+                        public void run() {
+                            try {
+                                super.run();
+                                sleep(1500);  //Delay of 1.5 seconds
+                            } catch (Exception e) {
+
+                            } finally {
+
+                                Intent i = new Intent(Menu.this, CreateRoom.class);
+                                startActivity(i);
+
+                            }
+                        }
+                    };
+                    welcomeThread.start();
 
                 }
                 else if (item == 1) {
@@ -111,7 +129,7 @@ public class Menu extends AppCompatActivity {
 
                             } finally {
 
-                                Intent i = new Intent(Menu.this, OneVOne.class);
+                                Intent i = new Intent(Menu.this, EnterRoom.class);
                                 startActivity(i);
 
                             }

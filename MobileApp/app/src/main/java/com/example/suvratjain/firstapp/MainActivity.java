@@ -10,18 +10,19 @@ import android.widget.TextView;
 import android.graphics.Paint;
 
 public class MainActivity extends AppCompatActivity {
-
-    public static final String dummyUsername = "test";
-    public static final String dummypassword = "test";
+//
+//    public static final String dummyUsername = "test";
+//    public static final String dummypassword = "test";
 
     private EditText usernameValue;
     private EditText passwordValue;
+
     private String login_username;
     private String login_password;
     private String type;
     private TextView signUpButton;
     private TextView forgotPasswordTextView;
-    LoginPHPWorker loginPHPWorker;
+//    LoginPHPWorker loginPHPWorker;
 
 
     @Override
@@ -39,7 +40,9 @@ public class MainActivity extends AppCompatActivity {
         forgotPasswordTextView.setPaintFlags(forgotPasswordTextView.getPaintFlags() & ~Paint.UNDERLINE_TEXT_FLAG);
 
         //connect to database
-        loginPHPWorker = new LoginPHPWorker(this);
+//        loginPHPWorker = new LoginPHPWorker(this);
+
+
     }
 
     /* Called when the user taps the Sign-in button */
@@ -77,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
 
         Intent menu = new Intent(this, SignUp.class);
         startActivity(menu);
+
+
     }
 
     public void openForGotPasswordPage(View view) {
@@ -86,5 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent i = new Intent(this, ForgotPassword.class);
         startActivity(i);
+
+
     }
 }

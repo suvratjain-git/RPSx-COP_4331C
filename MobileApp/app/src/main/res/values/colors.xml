@@ -3,4 +3,6 @@
     <color name="colorPrimary">#303F9F</color>
     <color name="colorPrimaryDark">#EEEEEE</color>
     <color name="colorAccent">#D5377A</color>
+    <color name="changeAccountColor">#303F9F</color>
+    <color name="reportProblemColor">#303F9F</color>
 </resources>

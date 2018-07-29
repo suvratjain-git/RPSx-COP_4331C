@@ -168,7 +168,9 @@ public class Menu extends AppCompatActivity {
 
     //openLeaderBoard Activity
     public void openLeaderBoard(View view) {
-        Intent i = new Intent(this, LeaderBoard.class);
-        startActivity(i);
+
+        LeaderBoardWorker leaderBoardWorker = new LeaderBoardWorker(this);
+        leaderBoardWorker.execute();
+
     }
 }

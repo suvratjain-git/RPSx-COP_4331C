@@ -13,7 +13,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:label="RPS X-treme">
+            android:label="RPS X-treme"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,10 +23,12 @@
         </activity>
         <activity
             android:name=".SignUp"
-            android:label="Sign Up" />
+            android:label="Sign Up"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Menu"
-            android:label="Menu" />
+            android:label="Menu"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Settings"
             android:label="Settings" />
@@ -41,7 +44,8 @@
         <activity
             android:name=".OneVOne"
             android:label="Enter Gamer ID" />
-        <activity android:name=".Game"></activity>
+        <activity android:name=".Game"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

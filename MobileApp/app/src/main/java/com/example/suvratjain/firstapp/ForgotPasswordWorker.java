@@ -39,7 +39,7 @@ public class ForgotPasswordWorker extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... params){
 
         String email = params[0];
-        String forgot_password_url = "http://ameade.us/sendPasswordEmailrpsx.php";
+        String forgot_password_url = "http://ameade.us/API/sendPasswordEmailrpsx.php";
 
         try {
 

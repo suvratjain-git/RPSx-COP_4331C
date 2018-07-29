@@ -44,7 +44,8 @@ public class LoginPHPWorker extends AsyncTask<String, Void, String> {
 
         String type = params[0];
 //      String login_url = "http://192.168.1.2/login.php";
-        String login_url = "http://ameade.us/Loginrpsx.php";
+//        String login_url = "http://ameade.us/Loginrpsx.php";
+        String login_url = "http://ameade.us/API/Loginrpsx.php";
 
 //        System.out.println();
 //        System.out.println(" URL Validity: " + URLUtil.isValidUrl(login_url));
@@ -139,28 +140,40 @@ public class LoginPHPWorker extends AsyncTask<String, Void, String> {
 
     public String getDisplayName(String result) throws JSONException {
 
-        JSONObject object = new JSONObject(result);
-
-        String displayName = object.getString("displayName");
-
-        System.out.println("Display Name: " + result);
-        return displayName;
+//        JSONObject jsonObject = new JSONObject(result);
+//
+//        String displayName = jsonObject.getString("displayName");
+//
+//        System.out.println("Display Name: " + jsonObject);
+        String pattern = ",";
+        String jsonInput = result;
+        String[] jsonObjects = jsonInput.split(pattern);
+        String jsonObject = jsonObjects[0];
+        System.out.println("JSON Object = " + jsonObjects[0]);
+        System.out.println(jsonInput);
+        return jsonObject;
     }
 
     @Override
     protected void onPostExecute(String result) {
 
-        String displayName = "";
         //start menu if the credentials are correct
-        if(result.equals("\"0\""))
-        {
+        if (result == null) {
+            Toast.makeText(context, "Connection error...", Toast.LENGTH_LONG).show();
+        } else if(result.equals("\"0\"")) {
 //            alertDialog.setMessage("Login Unsuccessful. Try Again!");
 //            alertDialog.show();
             Toast.makeText(context, "Invalid Login. Please try again...", Toast.LENGTH_LONG).show();
-        }
+        } else {
 
-        else
-        {
+            String displayName = null;
+
+            try {
+                displayName = getDisplayName(result);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
             Toast.makeText(context, "Login Successful. Welcome!", Toast.LENGTH_LONG).show();
 //            alertDialog.setMessage("Login Successful!");
 //
@@ -174,7 +187,7 @@ public class LoginPHPWorker extends AsyncTask<String, Void, String> {
 //            }
             Intent menu = new Intent(context, Menu.class);
             menu.putExtra("user name", user_name);
-//            menu.putExtra("display name", displayName);
+            menu.putExtra("display name", displayName);
             context.startActivity(menu);
 
         }

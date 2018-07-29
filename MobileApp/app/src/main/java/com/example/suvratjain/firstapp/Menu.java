@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class Menu extends AppCompatActivity {
 
-    private TextView userNameField, displayNameField;
+    private TextView userNameField, displayNameField, displayNameField_value, userNameField_value;
     private String[] choices = new String[]{"Tournament", "1v1"};
     private AlertDialog gameOptionsDialog;
 
@@ -24,9 +24,13 @@ public class Menu extends AppCompatActivity {
 
         userNameField = findViewById(R.id.userName);
         displayNameField = findViewById(R.id.displayName);
+        userNameField_value = findViewById(R.id.userName_value);
+        displayNameField_value = findViewById(R.id.displayName_value);
 
-        userNameField.setText("Username: " + getUsername());
-        displayNameField.setText("DisplayName: " + getDisplayName());
+        userNameField.setText("Username: ");
+        userNameField_value.setText(getUsername());
+        displayNameField.setText("DisplayName: ");
+        displayNameField_value.setText(getDisplayName());
 
 
 //        //get extras from previous activity
@@ -64,6 +68,7 @@ public class Menu extends AppCompatActivity {
 
         if(b!=null){
             displayName = (String) b.get("display name");
+            displayName = displayName.substring(3);
         }
 
         return displayName;
@@ -139,6 +144,7 @@ public class Menu extends AppCompatActivity {
 
         Intent settings = new Intent(this, Settings.class);
         settings.putExtra("user name", getUsername());
+        settings.putExtra("display name", getDisplayName());
         startActivity(settings);
     }
 

@@ -5,32 +5,58 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 public class Settings extends AppCompatActivity {
 
-    private TextView displayUserNameField;
+    private TextView userNameField, displayNameField, userNameField_value, displayNameField_value;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        displayUserNameField = findViewById(R.id.userName);
+        userNameField = findViewById(R.id.userName);
+        userNameField_value = findViewById(R.id.userName_value);
+        displayNameField = findViewById(R.id.displayName);
+        displayNameField_value = findViewById(R.id.displayName_value);
 
-        //get extras from previous activity
-        Intent i = getIntent();
-        Bundle b = i.getExtras();
-
-        if(b!=null){
-            String j = (String) b.get("user name");
-            displayUserNameField.setText("Username: " + j);
-        } else {
-            System.out.println("It is null");
-        }
+        userNameField.setText("Username: ");
+        userNameField_value.setText(getUsername());
+        displayNameField.setText("DisplayName: ");
+        displayNameField_value.setText(getDisplayName());
     }
 
+    public String getUsername()
+    {
 
-    public void back(View view) {
+        Intent main = getIntent();
+        Bundle b = main.getExtras();
+        String username = null;
+
+        if(b!=null){
+            username = (String) b.get("user name");
+        }
+
+        return username;
+    }
+
+    public String getDisplayName()
+    {
+        Intent main = getIntent();
+        Bundle b = main.getExtras();
+        String displayName = null;
+
+        if(b!=null){
+            displayName = (String) b.get("display name");
+        }
+
+        return displayName;
+    }
+
+    public void back(View view)
+    {
         finish();
     }
 }

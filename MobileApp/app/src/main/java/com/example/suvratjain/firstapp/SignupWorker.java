@@ -48,7 +48,7 @@ public class SignupWorker extends AsyncTask<String, Void, String> {
         String email = params[4];
         String password1 = params[5];
 
-        String signup_url = "http://ameade.us/addUserrpsx.php";
+        String signup_url = "http://ameade.us/API/addUserrpsx.php";
 
             try {
 

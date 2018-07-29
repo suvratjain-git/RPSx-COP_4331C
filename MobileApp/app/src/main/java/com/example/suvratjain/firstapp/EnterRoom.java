@@ -29,15 +29,16 @@ public class EnterRoom extends AppCompatActivity {
 
         EnterRoomWorker enterSession = new EnterRoomWorker(this);
         enterSession.execute(room_number, displayName);
-//
-//        String toastText = "Entering room #" + room_number;
-//        Toast.makeText(EnterRoom.this, toastText, Toast.LENGTH_LONG).show();
 
-//        Intent i = new Intent(this, Game.class);
-////        i.putExtra("Room Number", roomNumber);
-//        startActivity(i);
+// String toastText = "Entering room #" + room_number;
+////        Toast.makeText(EnterRoom.this, toastText, Toast.LENGTH_LONG).show();
 //
-//        finish();
+////        Intent i = new Intent(this, Game.class);
+//////        i.putExtra("Room Number", roomNumber);
+////        startActivity(i);
+////
+////        finish();
+//
     }
 
 

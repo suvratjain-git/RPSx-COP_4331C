@@ -178,7 +178,6 @@ public class EnterRoomWorker extends AsyncTask<String, Void, String> {
         else if(result.equals("\"1\""))
         {
             status = true;
-            System.out.println("result = " + result);
 
             String str = "Welcome to Game Room #" + roomNum;
             Toast.makeText(context, str, Toast.LENGTH_LONG).show();

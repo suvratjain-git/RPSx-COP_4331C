@@ -184,6 +184,7 @@ public class EnterRoomWorker extends AsyncTask<String, Void, String> {
 
             Intent i = new Intent(context, Game.class);
             i.putExtra("display name", displayName);
+            i.putExtra("room number", roomNum);
             context.startActivity(i);
             ((Activity)context).finish();
         }

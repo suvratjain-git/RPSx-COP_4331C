@@ -22,13 +22,13 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class NewRoomWorker extends AsyncTask<String, Void, String> {
+public class CreateRoomWorker extends AsyncTask<String, Void, String> {
 
     Context context;
     String roomNum;
     String displayName;
 
-    NewRoomWorker(Context ctx)
+    CreateRoomWorker(Context ctx)
     {
         context = ctx;
     }
@@ -114,6 +114,7 @@ public class NewRoomWorker extends AsyncTask<String, Void, String> {
 
             Intent i = new Intent(context, Game.class);
             i.putExtra("display name", displayName);
+            i.putExtra("room number", roomNum);
             context.startActivity(i);
             ((Activity)context).finish();
         }

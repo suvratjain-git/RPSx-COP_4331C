@@ -59,7 +59,7 @@
 
                             <TextView
                                 android:id="@+id/winLabel1"
-                                android:layout_width="193dp"
+                                android:layout_width="167dp"
                                 android:layout_column="1"
                                 android:gravity="center"
                                 android:padding="3dip"
@@ -117,7 +117,7 @@
 
                             <TextView
                                 android:id="@+id/lossLabel1"
-                                android:layout_width="193dp"
+                                android:layout_width="167dp"
                                 android:layout_height="wrap_content"
                                 android:layout_column="1"
                                 android:gravity="center"

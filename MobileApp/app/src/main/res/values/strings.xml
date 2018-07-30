@@ -44,6 +44,9 @@
     <!-- CreateRoom.java Class Strings -->
     <string name="create">Create Room</string>
 
+    <!-- Game.java Class Strings -->
+    <string name="send">Send</string>
+
 
 
 </resources>

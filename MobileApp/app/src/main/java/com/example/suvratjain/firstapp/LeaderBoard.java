@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.JsonReader;
+import android.view.Gravity;
+import android.view.ViewGroup;
 import android.widget.*;
 import android.graphics.*;
 
@@ -43,6 +45,7 @@ public class LeaderBoard extends AppCompatActivity{
         Intent i = getIntent();
         Bundle b = i.getExtras();
 
+
         try {
             dispalyWinBoardData((String)b.get("Win Data"));
         } catch (JSONException e) {
@@ -53,6 +56,8 @@ public class LeaderBoard extends AppCompatActivity{
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+
 
     }
 
@@ -78,14 +83,38 @@ public class LeaderBoard extends AppCompatActivity{
     public void dispalyWinBoardData(String winList) throws JSONException {
 
         HashMap<String, Integer> data = convertJSONtoLinkedHashMap(winList);
-
         Set<String> keys = data.keySet();
 
+        TextView t1 = findViewById(R.id.winEntry_1_displayName);
+        TextView t2 = findViewById(R.id.winEntry_1_winCount);
+        TextView t3 = findViewById(R.id.winEntry_2_displayName);
+        TextView t4 = findViewById(R.id.winEntry_2_winCount);
+        TextView t5 = findViewById(R.id.winEntry_3_displayName);
+        TextView t6 = findViewById(R.id.winEntry_3_winCount);
+        TextView t7 = findViewById(R.id.winEntry_4_displayName);
+        TextView t8 = findViewById(R.id.winEntry_4_winCount);
+        TextView t9 = findViewById(R.id.winEntry_5_displayName);
+        TextView t10 = findViewById(R.id.winEntry_5_winCount);
+
+        TextView [] rowEntries = {t1, t2, t3, t4, t5, t6, t7,t8, t9, t10};
+
+        int i = 0;
         for(String k: keys)
         {
-            System.out.println("Key: " + k + ", Value " + data.get(k));
+            System.out.println("Win Key: " + k + ", Value " + data.get(k));
+
+            rowEntries[i].setText(k);
+            i+=2;
         }
 
+        i = 1;
+        for(String k: keys)
+        {
+//            System.out.println("Key: " + k + ", Value " + data.get(k));
+
+            rowEntries[i].setText(Integer.toString(data.get(k)));
+            i+=2;
+        }
 
 
     }
@@ -94,9 +123,40 @@ public class LeaderBoard extends AppCompatActivity{
     public void dispalyLossBoardData(String lossList) throws JSONException {
 
         HashMap<String, Integer> data = convertJSONtoLinkedHashMap(lossList);
+        Set<String> keys = data.keySet();
 
-        System.out.println("Losers Linked Hash Map: " + data);
+//        System.out.println("Losers Linked Hash Map: " + data);
 
+        TextView t1 = findViewById(R.id.lossEntry_1_displayName);
+        TextView t2 = findViewById(R.id.lossEntry_1_lossCount);
+        TextView t3 = findViewById(R.id.lossEntry_2_displayName);
+        TextView t4 = findViewById(R.id.lossEntry_2_lossCount);
+        TextView t5 = findViewById(R.id.lossEntry_3_displayName);
+        TextView t6 = findViewById(R.id.lossEntry_3_lossCount);
+        TextView t7 = findViewById(R.id.lossEntry_4_displayName);
+        TextView t8 = findViewById(R.id.lossEntry_4_lossCount);
+        TextView t9 = findViewById(R.id.lossEntry_5_displayName);
+        TextView t10 = findViewById(R.id.lossEntry_5_lossCount);
+
+        TextView [] rowEntries = {t1, t2, t3, t4, t5, t6, t7,t8, t9, t10};
+
+        int i = 0;
+        for(String k: keys)
+        {
+            System.out.println("Loss Key: " + k + ", Value " + data.get(k));
+
+            rowEntries[i].setText(k);
+            i+=2;
+        }
+
+        i = 1;
+        for(String k: keys)
+        {
+//            System.out.println("Key: " + k + ", Value " + data.get(k));
+
+            rowEntries[i].setText(Integer.toString(data.get(k)));
+            i+=2;
+        }
 
     }
 

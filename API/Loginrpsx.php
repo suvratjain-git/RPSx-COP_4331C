@@ -6,7 +6,7 @@
 	$gamesLost = 0;
 	$gamesTied = 0;
 	$gamesPlayed = 0;
-	$data = "";
+	$data = [];
 
 	$conn = new mysqli("localhost", "RudeDude", "cop4331!", "RPSx");
 
@@ -26,7 +26,7 @@
 			$gamesTied = $row["gamesTied"];
 			$gamesPlayed = $row["gamesPlayed"];
 			$displayName = $row["displayName"];
-			$data .='"'.$displayName.",".$gamesWon.",".$gamesLost.",".$gamesTied.",".$gamesPlayed.'"';
+			$data +=["displayName" => $displayName, "gamesWon" => $gamesWon, "gamesLost" => $gamesLost, "gamesTied" => $gamesTied, "gamesPlayed" => $gamesPlayed];
 			returnWithInfo($data);
 		}
 		else

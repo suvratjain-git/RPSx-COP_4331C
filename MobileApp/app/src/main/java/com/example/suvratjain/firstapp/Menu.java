@@ -9,11 +9,15 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Menu extends AppCompatActivity {
 
     private TextView userNameField, displayNameField, displayNameField_value, userNameField_value;
     private String[] choices = new String[]{"Create Room", "Enter Room"};
     private AlertDialog gameOptionsDialog;
+    private String user_name, display_name;
 
 
     @Override
@@ -30,20 +34,28 @@ public class Menu extends AppCompatActivity {
         userNameField.setText("UserName: ");
         userNameField_value.setText(getUsername());
         displayNameField.setText("DisplayName: ");
-        displayNameField_value.setText(getDisplayName());
+        try {
+            displayNameField_value.setText(getDisplayName());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
+    }
+//    {"displayName":"PapaJohns","gamesWon":"10","gamesLost":"1","gamesTied":"3","gamesPlayed":"14"}
 
-//        //get extras from previous activity
-//        Intent i = getIntent();
-//        b = i.getExtras();
-//
-//        if(b!=null){
-//            String j = (String) b.get("user name");
-//            displayUserNameField.setText("Username: " + j);
-//        } else {
-//            System.out.println("It is null");
-//        }
+    public String getDisplayName () throws JSONException
+    {
+        Intent main = getIntent();
+        Bundle b = main.getExtras();
 
+        JSONObject json;
+        if(b!=null)
+        {
+            json = new JSONObject((String) b.get("json object"));
+            display_name = (String) json.get("displayName");
+        }
+
+        return display_name;
     }
 
     public String getUsername()
@@ -60,24 +72,9 @@ public class Menu extends AppCompatActivity {
         return username;
     }
 
-    public String getDisplayName()
-    {
-        Intent main = getIntent();
-        Bundle b = main.getExtras();
-
-        String displayName = null;
-
-        if(b!=null){
-            displayName = (String) b.get("display name");
-            displayName = displayName.substring(3);
-        }
-
-        return displayName;
-    }
 
     //open the dialog box with radio buttons
-    public void openNewSession(View view)
-    {
+    public void openNewSession(View view) throws JSONException {
 
         final String displayName = getDisplayName();
 
@@ -98,7 +95,7 @@ public class Menu extends AppCompatActivity {
 
                 if (item == 0)
                 {
-                  Toast.makeText(Menu.this, "Please wait...", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Menu.this, "Please wait...", Toast.LENGTH_LONG).show();
 //                    workInProgress.show();
 
                     Thread welcomeThread = new Thread() {
@@ -165,7 +162,7 @@ public class Menu extends AppCompatActivity {
     }
 
     //open Settings Activity
-    public void openSettings(View view) {
+    public void openSettings(View view) throws JSONException {
 
         Intent settings = new Intent(this, Settings.class);
         settings.putExtra("user name", getUsername());

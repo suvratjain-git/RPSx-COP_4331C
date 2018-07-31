@@ -20,12 +20,12 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class GameWorker extends AsyncTask<Void, Void, Void>
+public class GameWorker extends AsyncTask<String, Void, String>
 {
-    public final String game_url = "http://ameade.us/API/Loginrpsx.php";
+    private String getUserNames = "http://ameade.us/API/getRoomUsersrpsx.php";
+
     Context context;
-    String user_1;
-    String user_2;
+
 
     public GameWorker (Context ctx)
     {
@@ -33,13 +33,58 @@ public class GameWorker extends AsyncTask<Void, Void, Void>
     }
 
     @Override
-    protected Void doInBackground(Void... voids)
+    protected String doInBackground(String... params)
     {
-        JSONObject jsonObject = new JSONObject();
-        URL url = new URL(game_url);
+
+        if(params[0].equals("displayNames"))
+        {
+
+            int room_number = Integer.parseInt(params[1]);
+
+            try {
+
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("room", room_number);
+
+
+                URL url = new URL(getUserNames);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setDoInput(true);
+                httpURLConnection.setDoOutput(true);
+
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+
+                //write data
+                bufferedWriter.write(String.valueOf(jsonObject));
+                bufferedWriter.flush();
+
+                //close streams
+                bufferedWriter.close();
+                outputStream.close();
+
+
+
+
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+        }
 
         return null;
     }
 
+    @Override
+    protected void onPostExecute(String result)
+    {
 
+    }
 }

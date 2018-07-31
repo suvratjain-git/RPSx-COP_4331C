@@ -6,12 +6,11 @@ import android.os.Bundle;
 
 public class Game extends AppCompatActivity {
 
-    //get the roomNumber of the user
-    private String roomNum;
-    private String [] displayNames;
 
     //this will control the timeout loop 
-    //Timer() timeout = New Timer(); might not need with the new C based logic approach 
+    //Timer() timeout = New Timer(); might not need with the new C based logic approach
+
+    private String type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -19,8 +18,11 @@ public class Game extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        String room_number = getRoomNumber();
+        type = "displayNames";
+
         GameWorker gameWorker = new GameWorker(this);
-        gameWorker.execute();
+        gameWorker.execute(type, room_number);
 
         /* Note: Rock = 0, Paper = 1, Scissor = 2
         * Suvrat's Logic (This is not tested and could have flaws):
@@ -39,6 +41,20 @@ public class Game extends AppCompatActivity {
 
     }
 
+    public String getRoomNumber()
+    {
+        Intent i = getIntent();
+        Bundle b = i.getExtras();
+        String roomNum = null;
+
+        if(b!=null)
+        {
+            roomNum = (String) b.get("room");
+        }
+
+        return roomNum;
+    }
+
     //makes an API call
     public boolean verifyRoomFull(String room_number)
     {
@@ -46,19 +62,7 @@ public class Game extends AppCompatActivity {
         return false;
     }
 
-    //pull a JSON string from API call
-    public String[] getUsers(String room_number)
-    {
-        //get the Room Number of this Game Session
-        Intent previousActivity = getIntent();
-        Bundle extrasFromPreviousActivity = previousActivity.getExtras();
-        if(extrasFromPreviousActivity!=null)
-        {
-            roomNum = (String) extrasFromPreviousActivity.get("room number");
-        }
 
-        return null;
-    }
 
 //    public gameTimer(){
 //            int winCount = 0;

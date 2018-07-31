@@ -3,6 +3,10 @@ package com.example.suvratjain.firstapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class Game extends AppCompatActivity {
 
@@ -10,7 +14,10 @@ public class Game extends AppCompatActivity {
     //this will control the timeout loop 
     //Timer() timeout = New Timer(); might not need with the new C based logic approach
 
+    private EditText host, guest;
     private String type;
+    private String hostName;
+    private String guestName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -18,7 +25,22 @@ public class Game extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        host = findViewById(R.id.host_displayName);
+        guest = findViewById(R.id.guest_displayName);
+
         String room_number = getRoomNumber();
+
+
+        if(hostName != null)
+        {
+            host.setText(hostName);
+        }
+        else if(guestName != null)
+        {
+            guest.setText(guestName);
+        }
+
+
         type = "displayNames";
 
         GameWorker gameWorker = new GameWorker(this);
@@ -49,7 +71,18 @@ public class Game extends AppCompatActivity {
 
         if(b!=null)
         {
-            roomNum = (String) b.get("room");
+            roomNum = (String) b.get("room number");
+        }
+
+        String gamer = (String) b.get("gamer_category");
+
+        if(gamer.equals("host"))
+        {
+            hostName = (String) b.get("display name");
+        }
+        else if (gamer.equals("guest"))
+        {
+            guestName = (String) b.get("display name");
         }
 
         return roomNum;

@@ -113,6 +113,7 @@ public class CreateRoomWorker extends AsyncTask<String, Void, String> {
             Toast.makeText(context, str, Toast.LENGTH_LONG).show();
 
             Intent i = new Intent(context, Game.class);
+            i.putExtra("gamer_category", "host");
             i.putExtra("display name", displayName);
             i.putExtra("room number", roomNum);
             context.startActivity(i);

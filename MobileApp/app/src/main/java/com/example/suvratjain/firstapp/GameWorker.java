@@ -22,7 +22,7 @@ import java.net.URL;
 
 public class GameWorker extends AsyncTask<String, Void, String>
 {
-    private String getUserNames = "http://ameade.us/API/getRoomUsersrpsx.php";
+    private String getUserNames_url = "http://ameade.us/API/getRoomUsersrpsx.php";
 
     Context context;
 
@@ -47,7 +47,7 @@ public class GameWorker extends AsyncTask<String, Void, String>
                 jsonObject.put("room", room_number);
 
 
-                URL url = new URL(getUserNames);
+                URL url = new URL(getUserNames_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setDoInput(true);
                 httpURLConnection.setDoOutput(true);

@@ -10,6 +10,9 @@ public class Game extends AppCompatActivity {
     private String roomNum;
     private String [] displayNames;
 
+    //this will control the timeout loop 
+    //Timer() timeout = New Timer(); might not need with the new C based logic approach 
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -55,4 +58,64 @@ public class Game extends AppCompatActivity {
         return null;
     }
 
+    public gameTimer(){
+            int winCount = 0;
+            String winner = ""
+            int pChoice = getChoice();
+            int oChoice = getChoice();
+            //this should run a loop for 1 min from current time executed
+            while(winCount < 2) {
+                long endTime = System.currentTimeMillis() + 60000
+                while (System.currentTimeMillis() < endTime) {
+                    
+                    if(pChoice == oChoice) {
+                        winner = "The result is a tie!";
+                    }
+
+                    if(pChoice == 0) {
+                        if(oChoice == 2) {
+                            winner = "rock wins";
+                        } else {
+                            winner = "paper wins";
+                        }
+                    }
+
+                    if(pChoice == 1) {
+                        if(oChoice == "rock") {
+                            winner = "paper wins";
+                        } else {
+                            if(oChoice == 2) {
+                                winner = "scissors wins";
+                        }
+                        }
+                    }
+
+                    if(pChoice == 2) {
+                        if(oChoice == "rock") {
+                            winner = "Rock wins";
+                        } else {
+                            if(oChoice == 1) {
+                                winner = "scissors wins";
+                            }
+                        }
+                }
+
+                //if current time is more than scheduled endtime
+                if( endTime < System.currentTimeMillis()){
+                    //loss count goes up here 
+                }
+
+                winCount++; //increment win counter 
+        }
+    }
+    
+        //store them 
+    public int getChoice(){
+        //I Have no idea how to do the xml shit to get response from pics sorry suvrat 
+
+    }
+
+
+
 }
+

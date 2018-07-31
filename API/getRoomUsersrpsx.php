@@ -2,7 +2,6 @@
 	$inData = getRequestInfo();
 
 	$room = $inData["room"];
-	$data = [];
 
 	$conn = new mysqli("localhost", "RudeDude", "cop4331!", "RPSx");
 	if ($conn->connect_error)
@@ -11,14 +10,12 @@
 	}
 	else
 	{
-    $sql = "SELECT user_1,user_2,choice_1,choice_2 FROM Room_Table WHERE room='" . $room . "'";
+    $sql = "SELECT user_1,user_2 FROM Room_Table WHERE room='" . $room . "'";
     $result = $conn->query($sql);
     if($result->num_rows > 0)
     {
       $row = $result->fetch_assoc();
-			$data += ["user_1" => $row["user_1"], "choice_1" => $row["choice_1"], "user_2" => $row["user_2"], "choice_2" => $row["choice_2"]];
-			$update = "UPDATE Room_Table SET isFull ='" . 1 . "' WHERE room='" . $room . "'";
-			$res = $conn->query($update);
+		  $data = array("user_1"=>$row["user_1"], "user_2"=>$row["user_2"]);
       returnWithError($data);
     }
     else

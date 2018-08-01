@@ -7,18 +7,30 @@
     tools:context=".Game">
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:id="@+id/scrollView3"
+        android:layout_width="372dp"
+        android:layout_height="479dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/hostView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="127dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
@@ -81,7 +93,7 @@
             <LinearLayout
                 android:id="@+id/guestView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="125dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
@@ -143,79 +155,85 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/gamePanel"
+                android:id="@+id/linearLayout7"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="60dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="@+id/confirm"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.523"
-                app:layout_constraintStart_toStartOf="parent">
+                android:layout_height="90dp"
+                android:orientation="vertical"
+                tools:layout_editor_absoluteX="14dp"
+                tools:layout_editor_absoluteY="332dp">
 
-                <ImageView
-                    android:id="@+id/rockImage"
+                <LinearLayout
+                    android:id="@+id/gamePanel"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:layout_weight="1"
-                    android:contentDescription="@string/rock"
-                    app:srcCompat="@drawable/rock"
-                    tools:layout_editor_absoluteX="46dp"
-                    tools:layout_editor_absoluteY="196dp" />
-
-                <ImageView
-                    android:id="@+id/paperImage"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:layout_weight="1"
-                    android:contentDescription="@string/paper"
-                    app:srcCompat="@drawable/paper"
-                    tools:layout_editor_absoluteX="164dp"
-                    tools:layout_editor_absoluteY="299dp" />
-
-                <ImageView
-                    android:id="@+id/scissorImage"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:layout_weight="1"
-                    android:contentDescription="@string/scissor"
-                    app:srcCompat="@drawable/scissor"
-                    tools:layout_editor_absoluteX="276dp"
-                    tools:layout_editor_absoluteY="296dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/confirm"
-                    android:layout_width="298dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="8dp"
+                    android:layout_height="150dp"
+                    android:layout_marginBottom="60dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="8dp"
-                    android:layout_weight="1"
-                    android:text="@string/send"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="@+id/confirm"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintHorizontal_bias="0.523"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <ImageView
+                        android:id="@+id/rockImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/rock"
+                        app:srcCompat="@drawable/rock"
+                        tools:layout_editor_absoluteX="46dp"
+                        tools:layout_editor_absoluteY="196dp" />
+
+                    <ImageView
+                        android:id="@+id/paperImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/paper"
+                        app:srcCompat="@drawable/paper"
+                        tools:layout_editor_absoluteX="164dp"
+                        tools:layout_editor_absoluteY="299dp" />
+
+                    <ImageView
+                        android:id="@+id/scissorImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/scissor"
+                        app:srcCompat="@drawable/scissor"
+                        tools:layout_editor_absoluteX="276dp"
+                        tools:layout_editor_absoluteY="296dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                tools:layout_editor_absoluteX="11dp"
+                tools:layout_editor_absoluteY="491dp">
 
                 <Button
                     android:id="@+id/refresh"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="32dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:onClick="Refresh"
                     android:text="R" />
+
+                <Button
+                    android:id="@+id/confirmButton"
+                    android:layout_width="260dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="Refresh"
+                    android:text="@string/send" />
 
             </LinearLayout>
 

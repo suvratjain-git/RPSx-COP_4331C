@@ -241,7 +241,7 @@
                     android:layout_width="260dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:onClick="Refresh"
+                    android:onClick="sendResult"
                     android:text="@string/send" />
 
                 <Button

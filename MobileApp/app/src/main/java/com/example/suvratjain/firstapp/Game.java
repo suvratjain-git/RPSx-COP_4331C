@@ -2,7 +2,9 @@ package com.example.suvratjain.firstapp;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,6 +30,9 @@ public class Game extends AppCompatActivity {
     private TextView host, guest;
     private String hostName = null;
     private String guestName = null;
+
+    //1 = rock, 2 = paper, 3 = scissor
+    private int value = 0;
 
 
 
@@ -236,7 +242,6 @@ public class Game extends AppCompatActivity {
 
     public void clearView(View view)
     {
-        scissor = findViewById(R.id.scissorImage);
         hostImage = findViewById(R.id.host_image);
         guestImage = findViewById(R.id.guest_image);
 
@@ -258,6 +263,88 @@ public class Game extends AppCompatActivity {
             guestImage.setImageResource(0);
         }
 
+    }
+
+    public void sendResult(View view) throws ExecutionException, InterruptedException {
+        rock = findViewById(R.id.rockImage);
+        paper = findViewById(R.id.paperImage);
+        scissor = findViewById(R.id.scissorImage);
+
+        Bitmap rockIm = ((BitmapDrawable)rock.getDrawable()).getBitmap();
+        Bitmap paperIm = ((BitmapDrawable)paper.getDrawable()).getBitmap();
+        Bitmap scissorIm = ((BitmapDrawable)scissor.getDrawable()).getBitmap();
+
+        Intent i = getIntent();
+        Bundle b = i.getExtras();
+        String gamer = null;
+        String display_name = null;
+        String user_choice = null;
+
+        if(b!=null)
+        {
+            gamer = (String) b.get("gamer_category");
+        }
+
+        if(gamer.equals("host"))
+        {
+            display_name = (String) b.get("display name");
+
+            hostImage = findViewById(R.id.host_image);
+            Bitmap hostMap = ((BitmapDrawable)hostImage.getDrawable()).getBitmap();
+
+            if(hostMap == rockIm)
+            {
+                value = 1;
+                user_choice = "Rock";
+            }
+            else if(hostMap == paperIm)
+            {
+                value = 2;
+                user_choice = "Paper";
+            }
+            else if(hostMap == scissorIm)
+            {
+                value = 3;
+                user_choice = "Scissor";
+            }
+
+        }
+        else if (gamer.equals("guest"))
+        {
+            display_name = (String) b.get("display name");
+
+            guestImage = findViewById(R.id.guest_image);
+            Bitmap guestMap = ((BitmapDrawable)guestImage.getDrawable()).getBitmap();
+
+            if(guestMap == rockIm)
+            {
+                value = 1;
+                user_choice = "Rock";
+            }
+            else if(guestMap == paperIm)
+            {
+                value = 2;
+                user_choice = "Paper";
+            }
+            else if(guestMap == scissorIm)
+            {
+                value = 3;
+                user_choice = "Scissor";
+            }
+
+        }
+
+        GameLogic gameLogic = new GameLogic(this);
+        String choice = Integer.toString(value);
+        String sendPacket = gameLogic.execute(getRoomNumber(), display_name, choice).get();
+
+        String toast = "Your choice " + user_choice + " has been sent!";
+
+        System.out.println("packet = " + sendPacket);
+        if(sendPacket.equals("\"1\""))
+        {
+            Toast.makeText(this, toast, Toast.LENGTH_LONG).show();
+        }
     }
 
 

@@ -63,9 +63,27 @@ public class GameWorker extends AsyncTask<String, Void, String>
                 bufferedWriter.close();
                 outputStream.close();
 
+                //start input stream
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+
+                StringBuilder result = new StringBuilder();
+                String line;
+
+                while((line = bufferedReader.readLine()) != null)
+                {
+                    result.append(line);
+                }
 
 
+                bufferedReader.close();
+                inputStream.close();
 
+                httpURLConnection.disconnect();
+
+    System.out.println("Host result = " + result.toString());
+
+                return result.toString();
 
 
             } catch (JSONException e) {

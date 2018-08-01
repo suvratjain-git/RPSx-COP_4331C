@@ -3,10 +3,15 @@ package com.example.suvratjain.firstapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
+
+import java.util.concurrent.ExecutionException;
 
 public class Game extends AppCompatActivity {
 
@@ -15,9 +20,9 @@ public class Game extends AppCompatActivity {
     //Timer() timeout = New Timer(); might not need with the new C based logic approach
 
     private EditText host, guest;
-    private String type;
-    private String hostName;
-    private String guestName;
+    private String hostName = null;
+    private String guestName = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -25,26 +30,45 @@ public class Game extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        GameWorker gameWorker = new GameWorker(this);
+
         host = findViewById(R.id.host_displayName);
         guest = findViewById(R.id.guest_displayName);
 
         String room_number = getRoomNumber();
-
+        String type = "displayNames";
 
         if(hostName != null)
         {
             host.setText(hostName);
+            guest.setText("Waiting for user...");
+
         }
         else if(guestName != null)
         {
             guest.setText(guestName);
+
+            try {
+
+                String value = gameWorker.execute(type, room_number).get();
+                JSONObject jsonObject = new JSONObject(value);
+                host.setText((String) jsonObject.get("user_1"));
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
         }
 
+        //if guest is present, add host
+        //if host is present, loop until guest arrives
 
-        type = "displayNames";
 
-        GameWorker gameWorker = new GameWorker(this);
-        gameWorker.execute(type, room_number);
+
 
         /* Note: Rock = 0, Paper = 1, Scissor = 2
         * Suvrat's Logic (This is not tested and could have flaws):
@@ -88,13 +112,31 @@ public class Game extends AppCompatActivity {
         return roomNum;
     }
 
-    //makes an API call
-    public boolean verifyRoomFull(String room_number)
-    {
 
-        return false;
+    public void Refresh(View view) throws ExecutionException, InterruptedException, JSONException {
+        RefreshWorker refreshWorker = new RefreshWorker(this);
+
+        String room_number = getRoomNumber();
+
+        guestName = refreshWorker.execute("host",room_number).get();
+
+        JSONObject json = new JSONObject(guestName);
+
+        guestName = (String) json.get("user_2");
+
+
+
+        if(guestName.equals(""))
+        {
+            guest.setText("Waiting for user...");
+        }
+        else
+        {
+            guest.setText(guestName);
+        }
+
+
     }
-
 
 
 //    public gameTimer(){

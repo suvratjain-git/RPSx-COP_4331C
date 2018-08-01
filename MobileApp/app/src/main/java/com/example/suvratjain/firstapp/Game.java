@@ -165,7 +165,7 @@ public class Game extends AppCompatActivity {
 
             if(guestName.equals(""))
             {
-                guest.setText("Waiting for user...");
+                guest.setText("Waiting for someone to join...");
             }
             else
             {
@@ -219,6 +219,24 @@ public class Game extends AppCompatActivity {
             guestImage.setImageResource(R.drawable.paper);
             winner = 'H';
         }
+        else if(hostChoice == 1 && guestChoice == 1)
+        {
+            hostImage.setImageResource(R.drawable.rock);
+            guestImage.setImageResource(R.drawable.rock);
+            winner = 'T';
+        }
+        else if(hostChoice == 2 && guestChoice == 2)
+        {
+            hostImage.setImageResource(R.drawable.paper);
+            guestImage.setImageResource(R.drawable.paper);
+            winner = 'T';
+        }
+        else if(hostChoice == 3 && guestChoice == 3)
+        {
+            hostImage.setImageResource(R.drawable.scissor);
+            guestImage.setImageResource(R.drawable.scissor);
+            winner = 'T';
+        }
 //
 //        final char finalWinner = winner;
 //        Thread welcomeThread = new Thread() {
@@ -257,6 +275,9 @@ public class Game extends AppCompatActivity {
         {
             String text = "The winner is " + guest.getText();
             Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+        } else if (winner == 'T')
+        {
+            Toast.makeText(this, "It's a tie!", Toast.LENGTH_LONG).show();
         }
 
         //delete the Room
@@ -468,17 +489,14 @@ public class Game extends AppCompatActivity {
 
     }
 
-
     public void endGame(View view)
     {
-
         deleteRoom(getRoomNumber());
         finish();
     }
 
     private void deleteRoom(String roomNumber)
     {
-        int room_num = Integer.parseInt(roomNumber);
 
     }
 }

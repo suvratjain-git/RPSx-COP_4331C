@@ -237,33 +237,6 @@ public class Game extends AppCompatActivity {
             guestImage.setImageResource(R.drawable.scissor);
             winner = 'T';
         }
-//
-//        final char finalWinner = winner;
-//        Thread welcomeThread = new Thread() {
-//            @Override
-//            public void run() {
-//                try {
-//                    super.run();
-//                    sleep(2000);  //Delay of 2 second
-//                } catch (Exception e) {
-//
-//                } finally {
-//
-//                    //Make a toast of who the winner is
-//                    if(finalWinner == 'H')
-//                    {
-//                        String text = "The winner is " + host.getText();
-//                        Toast.makeText(this, text, Toast.LENGTH_LONG).show();
-//                    }
-//                    else if (finalWinner == 'G')
-//                    {
-//                        String text = "The winner is " + guest.getText();
-//                        Toast.makeText(this, text, Toast.LENGTH_LONG).show();
-//                    }
-//                }
-//            }
-//        };
-//        welcomeThread.start();
 
         //Make a toast of who the winner is
         if(winner == 'H')

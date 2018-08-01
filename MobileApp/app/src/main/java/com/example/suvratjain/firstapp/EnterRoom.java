@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,11 +25,16 @@ public class EnterRoom extends AppCompatActivity {
         Bundle b = i.getExtras();
 
         String displayName = (String)b.get("display name");
-        TextView roomNumber = findViewById(R.id.roomNum);
+        EditText roomNumber = findViewById(R.id.roomNum);
         String room_number = roomNumber.getText().toString();
 
-        EnterRoomWorker enterSession = new EnterRoomWorker(this);
-        enterSession.execute(room_number, displayName);
+        if(!roomNumber.getText().toString().equals(""))
+        {
+            EnterRoomWorker enterSession = new EnterRoomWorker(this);
+            enterSession.execute(room_number, displayName);
+        }
+
+
 
 // String toastText = "Entering room #" + room_number;
 ////        Toast.makeText(EnterRoom.this, toastText, Toast.LENGTH_LONG).show();

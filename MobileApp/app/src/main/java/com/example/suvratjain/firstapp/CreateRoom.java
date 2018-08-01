@@ -4,11 +4,12 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class CreateRoom extends AppCompatActivity {
 
-    private TextView roomNumber;
+    private EditText roomNumber;
     private String displayName;
 
 
@@ -30,9 +31,15 @@ public class CreateRoom extends AppCompatActivity {
         roomNumber = findViewById(R.id.roomNum);
         String room_number = roomNumber.getText().toString();
 
+        System.out.println("Room Number " + room_number);
 
-        CreateRoomWorker newSession = new CreateRoomWorker(this);
-        newSession.execute(room_number, displayName);
+        if(!roomNumber.getText().toString().equals(""))
+        {
+            CreateRoomWorker newSession = new CreateRoomWorker(this);
+            newSession.execute(room_number, displayName);
+        }
+
+
 
     }
 }

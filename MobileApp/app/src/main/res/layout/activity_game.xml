@@ -9,7 +9,7 @@
     <ScrollView
         android:id="@+id/scrollView3"
         android:layout_width="372dp"
-        android:layout_height="479dp"
+        android:layout_height="498dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
@@ -182,11 +182,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
                         android:layout_weight="1"
-                        android:contentDescription="@string/rock"
-                        app:srcCompat="@drawable/rock"
                         android:clickable="true"
+                        android:contentDescription="@string/rock"
                         android:focusable="true"
                         android:onClick="displayRock"
+                        app:srcCompat="@drawable/rock"
                         tools:layout_editor_absoluteX="46dp"
                         tools:layout_editor_absoluteY="196dp" />
 
@@ -195,11 +195,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
                         android:layout_weight="1"
-                        android:contentDescription="@string/paper"
-                        app:srcCompat="@drawable/paper"
                         android:clickable="true"
+                        android:contentDescription="@string/paper"
                         android:focusable="true"
                         android:onClick="displayPaper"
+                        app:srcCompat="@drawable/paper"
                         tools:layout_editor_absoluteX="164dp"
                         tools:layout_editor_absoluteY="299dp" />
 
@@ -208,11 +208,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
                         android:layout_weight="1"
-                        android:contentDescription="@string/scissor"
-                        app:srcCompat="@drawable/scissor"
                         android:clickable="true"
+                        android:contentDescription="@string/scissor"
                         android:focusable="true"
                         android:onClick="displayScissor"
+                        app:srcCompat="@drawable/scissor"
                         tools:layout_editor_absoluteX="276dp"
                         tools:layout_editor_absoluteY="296dp" />
 
@@ -253,6 +253,14 @@
                     android:text="Clear" />
 
             </LinearLayout>
+
+            <Button
+                android:id="@+id/finish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="endGame"
+                android:text="@string/finish" />
 
         </LinearLayout>
     </ScrollView>

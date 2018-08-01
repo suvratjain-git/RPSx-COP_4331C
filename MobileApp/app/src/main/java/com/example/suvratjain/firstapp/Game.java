@@ -31,6 +31,7 @@ public class Game extends AppCompatActivity {
     private String hostName = null;
     private String guestName = null;
     private boolean choiceSubmitted = false;
+    private boolean bothUserAvailable = false;
     //1 = rock, 2 = paper, 3 = scissor
     private int value = 0;
 
@@ -49,9 +50,10 @@ public class Game extends AppCompatActivity {
         guest = findViewById(R.id.guest_displayName);
 
 
-
-
         String room_number = getRoomNumber();
+
+        this.setTitle("Room Number #" + room_number);
+
         String type = "displayNames";
 
         if(hostName != null)
@@ -142,8 +144,12 @@ public class Game extends AppCompatActivity {
             guestName = refreshWorker.execute("Get Results",room_number).get();
 
             JSONObject json = new JSONObject(guestName);
+            int hostChoice = Integer.parseInt((String) json.get("choice_1"));
+            int guestChoice = Integer.parseInt((String) json.get("choice_2"));
 
+            displayResult(hostChoice, guestChoice);
 
+            choiceSubmitted = false;
         }
         else
         {
@@ -167,6 +173,98 @@ public class Game extends AppCompatActivity {
             }
         }
 
+    }
+
+    public void displayResult (int hostChoice, int guestChoice)
+    {
+        char winner = 0;
+
+        hostImage = findViewById(R.id.host_image);
+        guestImage = findViewById(R.id.guest_image);
+
+        //rock = 1, paper = 2, scissor = 3
+        if(hostChoice == 1 && guestChoice == 2)
+        {
+            hostImage.setImageResource(R.drawable.rock);
+            guestImage.setImageResource(R.drawable.paper);
+            winner = 'G';
+        }
+        else if(hostChoice == 1 && guestChoice == 3)
+        {
+            hostImage.setImageResource(R.drawable.rock);
+            guestImage.setImageResource(R.drawable.scissor);
+            winner = 'H';
+        }
+        else if(hostChoice == 2 && guestChoice == 1)
+        {
+            hostImage.setImageResource(R.drawable.paper);
+            guestImage.setImageResource(R.drawable.rock);
+            winner = 'H';
+        }
+        else if(hostChoice == 2 && guestChoice == 3)
+        {
+            hostImage.setImageResource(R.drawable.paper);
+            guestImage.setImageResource(R.drawable.scissor);
+            winner = 'G';
+        }
+        else if(hostChoice == 3 && guestChoice == 1)
+        {
+            hostImage.setImageResource(R.drawable.scissor);
+            guestImage.setImageResource(R.drawable.rock);
+            winner = 'G';
+        }
+        else if(hostChoice == 3 && guestChoice == 2)
+        {
+            hostImage.setImageResource(R.drawable.scissor);
+            guestImage.setImageResource(R.drawable.paper);
+            winner = 'H';
+        }
+//
+//        final char finalWinner = winner;
+//        Thread welcomeThread = new Thread() {
+//            @Override
+//            public void run() {
+//                try {
+//                    super.run();
+//                    sleep(2000);  //Delay of 2 second
+//                } catch (Exception e) {
+//
+//                } finally {
+//
+//                    //Make a toast of who the winner is
+//                    if(finalWinner == 'H')
+//                    {
+//                        String text = "The winner is " + host.getText();
+//                        Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+//                    }
+//                    else if (finalWinner == 'G')
+//                    {
+//                        String text = "The winner is " + guest.getText();
+//                        Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+//                    }
+//                }
+//            }
+//        };
+//        welcomeThread.start();
+
+        //Make a toast of who the winner is
+        if(winner == 'H')
+        {
+            String text = "The winner is " + host.getText();
+            Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+        }
+        else if (winner == 'G')
+        {
+            String text = "The winner is " + guest.getText();
+            Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+        }
+
+        //delete the Room
+//        deleteRoom(room_number);
+
+
+        //end activity
+//        finish();
     }
 
     public void displayRock(View view)
@@ -244,8 +342,6 @@ public class Game extends AppCompatActivity {
         else if (gamer.equals("guest"))
         {
             guestImage.setImageResource(R.drawable.scissor);
-
-
         }
 
 
@@ -266,14 +362,23 @@ public class Game extends AppCompatActivity {
             gamer = (String) b.get("gamer_category");
         }
 
-        if(gamer.equals("host"))
+        if(bothUserAvailable)
         {
             hostImage.setImageResource(0);
-        }
-        else if (gamer.equals("guest"))
-        {
             guestImage.setImageResource(0);
         }
+        else
+        {
+            if(gamer.equals("host"))
+            {
+                hostImage.setImageResource(0);
+            }
+            else if (gamer.equals("guest"))
+            {
+                guestImage.setImageResource(0);
+            }
+        }
+
 
     }
 
@@ -357,15 +462,24 @@ public class Game extends AppCompatActivity {
         {
             Toast.makeText(this, toast, Toast.LENGTH_LONG).show();
             choiceSubmitted = true;
+            bothUserAvailable = true;
         }
 
 
     }
 
 
+    public void endGame(View view)
+    {
 
+        deleteRoom(getRoomNumber());
+        finish();
+    }
 
+    private void deleteRoom(String roomNumber)
+    {
+        int room_num = Integer.parseInt(roomNumber);
 
-
+    }
 }
 

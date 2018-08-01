@@ -1,11 +1,14 @@
 package com.example.suvratjain.firstapp;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.json.JSONException;
@@ -20,9 +23,11 @@ public class Game extends AppCompatActivity {
     //this will control the timeout loop 
     //Timer() timeout = New Timer(); might not need with the new C based logic approach
 
+    private ImageView hostImage, guestImage, rock, paper, scissor;
     private TextView host, guest;
     private String hostName = null;
     private String guestName = null;
+
 
 
     @Override
@@ -36,6 +41,9 @@ public class Game extends AppCompatActivity {
 
         host = findViewById(R.id.host_displayName);
         guest = findViewById(R.id.guest_displayName);
+
+
+
 
         String room_number = getRoomNumber();
         String type = "displayNames";
@@ -65,6 +73,9 @@ public class Game extends AppCompatActivity {
             }
 
         }
+
+
+        //Game Logic
 
         //if guest is present, add host
         //if host is present, loop until guest arrives
@@ -137,6 +148,115 @@ public class Game extends AppCompatActivity {
             guest.setText(guestName);
         }
 
+
+    }
+
+    public void displayRock(View view)
+    {
+        rock = findViewById(R.id.rockImage);
+        hostImage = findViewById(R.id.host_image);
+        guestImage = findViewById(R.id.guest_image);
+
+        Intent i = getIntent();
+        Bundle b = i.getExtras();
+        String gamer = null;
+
+        if(b!=null)
+        {
+             gamer = (String) b.get("gamer_category");
+        }
+
+        if(gamer.equals("host"))
+        {
+            hostImage.setImageResource(R.drawable.rock);
+        }
+        else if (gamer.equals("guest"))
+        {
+            guestImage.setImageResource(R.drawable.rock);
+        }
+
+    }
+
+    public void displayPaper(View view)
+    {
+        paper = findViewById(R.id.paperImage);
+        hostImage = findViewById(R.id.host_image);
+        guestImage = findViewById(R.id.guest_image);
+
+        Intent i = getIntent();
+        Bundle b = i.getExtras();
+        String gamer = null;
+
+        if(b!=null)
+        {
+            gamer = (String) b.get("gamer_category");
+        }
+
+        if(gamer.equals("host"))
+        {
+            hostImage.setImageResource(R.drawable.paper);
+        }
+        else if (gamer.equals("guest"))
+        {
+            guestImage.setImageResource(R.drawable.paper);
+        }
+
+
+    }
+
+    public void displayScissor(View view)
+    {
+        scissor = findViewById(R.id.scissorImage);
+        hostImage = findViewById(R.id.host_image);
+        guestImage = findViewById(R.id.guest_image);
+
+        Intent i = getIntent();
+        Bundle b = i.getExtras();
+        String gamer = null;
+
+        if(b!=null)
+        {
+            gamer = (String) b.get("gamer_category");
+        }
+
+        if(gamer.equals("host"))
+        {
+            hostImage.setImageResource(R.drawable.scissor);
+        }
+        else if (gamer.equals("guest"))
+        {
+            guestImage.setImageResource(R.drawable.scissor);
+
+
+        }
+
+
+    }
+
+
+    public void clearView(View view)
+    {
+        scissor = findViewById(R.id.scissorImage);
+        hostImage = findViewById(R.id.host_image);
+        guestImage = findViewById(R.id.guest_image);
+
+        Intent i = getIntent();
+        Bundle b = i.getExtras();
+        String gamer = null;
+
+        if(b!=null)
+        {
+            gamer = (String) b.get("gamer_category");
+        }
+
+        if(gamer.equals("host"))
+        {
+            hostImage.setImageResource(0);
+        }
+        else if (gamer.equals("guest"))
+        {
+            guestImage.setImageResource(0);
+        }
 
     }
 

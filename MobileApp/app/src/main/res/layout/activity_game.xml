@@ -184,6 +184,9 @@
                         android:layout_weight="1"
                         android:contentDescription="@string/rock"
                         app:srcCompat="@drawable/rock"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:onClick="displayRock"
                         tools:layout_editor_absoluteX="46dp"
                         tools:layout_editor_absoluteY="196dp" />
 
@@ -194,6 +197,9 @@
                         android:layout_weight="1"
                         android:contentDescription="@string/paper"
                         app:srcCompat="@drawable/paper"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:onClick="displayPaper"
                         tools:layout_editor_absoluteX="164dp"
                         tools:layout_editor_absoluteY="299dp" />
 
@@ -204,6 +210,9 @@
                         android:layout_weight="1"
                         android:contentDescription="@string/scissor"
                         app:srcCompat="@drawable/scissor"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:onClick="displayScissor"
                         tools:layout_editor_absoluteX="276dp"
                         tools:layout_editor_absoluteY="296dp" />
 
@@ -221,7 +230,7 @@
 
                 <Button
                     android:id="@+id/refresh"
-                    android:layout_width="32dp"
+                    android:layout_width="56dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:onClick="Refresh"
@@ -234,6 +243,14 @@
                     android:layout_weight="1"
                     android:onClick="Refresh"
                     android:text="@string/send" />
+
+                <Button
+                    android:id="@+id/clear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="clearView"
+                    android:text="Clear" />
 
             </LinearLayout>
 

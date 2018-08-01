@@ -3,6 +3,7 @@ package com.example.suvratjain.firstapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -19,7 +20,7 @@ public class Game extends AppCompatActivity {
     //this will control the timeout loop 
     //Timer() timeout = New Timer(); might not need with the new C based logic approach
 
-    private EditText host, guest;
+    private TextView host, guest;
     private String hostName = null;
     private String guestName = null;
 
@@ -29,6 +30,7 @@ public class Game extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
 
         GameWorker gameWorker = new GameWorker(this);
 

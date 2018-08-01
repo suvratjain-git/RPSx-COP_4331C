@@ -21,6 +21,8 @@ public class RefreshWorker extends AsyncTask<String, Void, String>
 {
     private String verifyRoomfull = "http://ameade.us/API/verifyFullRoomrpsx.php";
     private String getUserNames_url = "http://ameade.us/API/getRoomUsersrpsx.php";
+    private String verifyBothUsersEntered = "http://ameade.us/API/verifyChoicerpsx.php";
+    private String getChoices = "http://ameade.us/API/requestChoicerpsx.php";
 
     Context context;
 
@@ -105,8 +107,111 @@ public class RefreshWorker extends AsyncTask<String, Void, String>
             }
         }
 
+        if(params[0].equals("Get Results"))
+        {
+            int roomNum = Integer.parseInt(params[1]);
+
+            try {
+                if(isFull(roomNum))
+                {
+                    JSONObject jsonObject = new JSONObject();
+                    jsonObject.put("room", roomNum);
+
+                    URL url = new URL(getChoices);
+                    HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                    httpURLConnection.setDoInput(true);
+                    httpURLConnection.setDoOutput(true);
+
+                    OutputStream outputStream = httpURLConnection.getOutputStream();
+                    BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+
+                    //write data
+                    bufferedWriter.write(String.valueOf(jsonObject));
+                    bufferedWriter.flush();
+
+                    //close streams
+                    bufferedWriter.close();
+                    outputStream.close();
+
+                    //start input stream
+                    InputStream inputStream = httpURLConnection.getInputStream();
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+
+                    StringBuilder result = new StringBuilder();
+                    String line;
+
+                    while((line = bufferedReader.readLine()) != null)
+                    {
+                        result.append(line);
+                    }
+
+
+                    bufferedReader.close();
+                    inputStream.close();
+
+                    httpURLConnection.disconnect();
+
+                    return result.toString();
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
 
         return null;
+    }
+
+    public boolean isFull(int room) throws JSONException, IOException {
+
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("room", room);
+
+        URL url = new URL(verifyBothUsersEntered);
+        HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+        httpURLConnection.setDoOutput(true);
+        httpURLConnection.setDoOutput(true);
+
+        OutputStream outputStream = httpURLConnection.getOutputStream();
+        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+
+        //write data
+        bufferedWriter.write(String.valueOf(jsonObject));
+        bufferedWriter.flush();
+
+        //close streams
+        bufferedWriter.close();
+        outputStream.close();
+
+        //start input stream
+        InputStream inputStream = httpURLConnection.getInputStream();
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+
+        StringBuilder result = new StringBuilder();
+        String line;
+
+        while((line = bufferedReader.readLine()) != null)
+        {
+            result.append(line);
+        }
+
+        if(result.equals("0"))
+        {
+            bufferedReader.close();
+            inputStream.close();
+            httpURLConnection.disconnect();
+            return false;
+        }
+
+
+        bufferedReader.close();
+        inputStream.close();
+        httpURLConnection.disconnect();
+
+        return true;
+
     }
 
     public boolean isRoomFull(int room) throws IOException, JSONException {

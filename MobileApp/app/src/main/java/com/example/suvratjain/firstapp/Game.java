@@ -30,7 +30,7 @@ public class Game extends AppCompatActivity {
     private TextView host, guest;
     private String hostName = null;
     private String guestName = null;
-
+    private boolean choiceSubmitted = false;
     //1 = rock, 2 = paper, 3 = scissor
     private int value = 0;
 
@@ -133,27 +133,39 @@ public class Game extends AppCompatActivity {
 
 
     public void Refresh(View view) throws ExecutionException, InterruptedException, JSONException {
-        RefreshWorker refreshWorker = new RefreshWorker(this);
 
-        String room_number = getRoomNumber();
-
-        guestName = refreshWorker.execute("host",room_number).get();
-
-        JSONObject json = new JSONObject(guestName);
-
-        guestName = (String) json.get("user_2");
-
-
-
-        if(guestName.equals(""))
+        if(choiceSubmitted)
         {
-            guest.setText("Waiting for user...");
+            RefreshWorker refreshWorker = new RefreshWorker(this);
+            String room_number = getRoomNumber();
+
+            guestName = refreshWorker.execute("Get Results",room_number).get();
+
+            JSONObject json = new JSONObject(guestName);
+
+
         }
         else
         {
-            guest.setText(guestName);
-        }
+            RefreshWorker refreshWorker = new RefreshWorker(this);
 
+            String room_number = getRoomNumber();
+            guestName = refreshWorker.execute("host",room_number).get();
+
+            JSONObject json = new JSONObject(guestName);
+
+            guestName = (String) json.get("user_2");
+
+
+            if(guestName.equals(""))
+            {
+                guest.setText("Waiting for user...");
+            }
+            else
+            {
+                guest.setText(guestName);
+            }
+        }
 
     }
 
@@ -338,72 +350,20 @@ public class Game extends AppCompatActivity {
         String choice = Integer.toString(value);
         String sendPacket = gameLogic.execute(getRoomNumber(), display_name, choice).get();
 
-        String toast = "Your choice " + user_choice + " has been sent!";
+        String toast = "Your choice " + user_choice + " is confirmed!";
 
         System.out.println("packet = " + sendPacket);
         if(sendPacket.equals("\"1\""))
         {
             Toast.makeText(this, toast, Toast.LENGTH_LONG).show();
+            choiceSubmitted = true;
         }
+
+
     }
 
 
-//    public gameTimer(){
-//            int winCount = 0;
-//            String winner = ""
-//            int pChoice = getChoice();
-//            int oChoice = getChoice();
-//            //this should run a loop for 1 min from current time executed
-//            while(winCount < 2) {
-//                long endTime = System.currentTimeMillis() + 60000
-//                while (System.currentTimeMillis() < endTime) {
-//
-//                    if(pChoice == oChoice) {
-//                        winner = "The result is a tie!";
-//                    }
-//
-//                    if(pChoice == 0) {
-//                        if(oChoice == 2) {
-//                            winner = "rock wins";
-//                        } else {
-//                            winner = "paper wins";
-//                        }
-//                    }
-//
-//                    if(pChoice == 1) {
-//                        if(oChoice == "rock") {
-//                            winner = "paper wins";
-//                        } else {
-//                            if(oChoice == 2) {
-//                                winner = "scissors wins";
-//                        }
-//                        }
-//                    }
-//
-//                    if(pChoice == 2) {
-//                        if(oChoice == "rock") {
-//                            winner = "Rock wins";
-//                        } else {
-//                            if(oChoice == 1) {
-//                                winner = "scissors wins";
-//                            }
-//                        }
-//                }
-//
-//                //if current time is more than scheduled endtime
-//                if( endTime < System.currentTimeMillis()){
-//                    //loss count goes up here
-//                }
-//
-//                winCount++; //increment win counter
-//        }
-//    }
-    
-        //store them 
-//    public int getChoice(){
-//        //I Have no idea how to do the xml shit to get response from pics sorry suvrat
-//
-//    }
+
 
 
 

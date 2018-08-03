@@ -1,4 +1,4 @@
-# COP4331BigProjectSummer2018
+# COP4331ProjectSummer2018
 
 http://ameade.us 
-Above is the webstie to rock(paper scissors) and roll 
+Here is the webstie to rock(paper scissors) and roll 
